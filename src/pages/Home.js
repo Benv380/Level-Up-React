@@ -1,3 +1,6 @@
+import react from 'react';
+import '../css/Home.css';
+
 export default function Home() {
     return (
         <div className="container-fluid py-4">

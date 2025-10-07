@@ -4,16 +4,14 @@ import { Link } from "react-router-dom";
 export default function Header() {
   return (
     <header>
-      <nav className="navbar navbar-expand-lg pastel-navbar">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <img
-            className="logo"
-
-            alt="Logo Pastelería"
+            //src={require("../assets/img/Logo - Level Up.png")}
+            alt="LevelUp"
+            className="navbar-brand"
+            style={{ height: "100px" }}
           />
-          <a className="navbar-brand ms-3" href="#">
-            Pastelería Mil Sabores
-          </a>
           <button
             className="navbar-toggler"
             type="button"
@@ -25,101 +23,55 @@ export default function Header() {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-
-          <div className="collapse navbar-collapse" id="header">
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link to="/" className="nav-link text-decoration-none">
-                  Inicio
+                <Link className="nav-link active" to="/">
+                  Home
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/login" className="nav-link text-decoration-none">
-                  Login
+                <Link className="nav-link active" to="/catalogo">
+                  Catálogo
                 </Link>
               </li>
-              <li className="nav-item">
-                <a 
-                  id="txtregistro"
-                  className="nav-link" 
-                  href="registro.html">
-                  Registrarse
-                </a>
-              </li>
-              <li className="nav-item">
+              <li className="nav-item categorias">
                 <a
-                  id="txtnoticias"
                   className="nav-link"
-                  href="https://www.duoc.cl/noticias/"
-                >
-                  Blogs y Noticias
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  id="txtrecetas"
-                  className="nav-link"
-                  href="perfil-usuario.html"
-                >
-                  Perfil
-                </a>
-              </li>
-              <li className="nav-item">
-                <a id="txtconsejos" className="nav-link" href="#">
-                  Consejos
-                </a>
-              </li>
-              <li className="av-item">
-                <a className="nav-link" href="" id="txtsalir">
-                  Salir
-                </a>
-              </li>
-              <li className="nav-item dropdown">
-                <a
-                  id="txtmenu"
-                  className="nav-link dropdown-toggle"
-                  href="menu.html"
+                  href="#"
                   role="button"
-                  data-bs-toggle="dropdown"
+                  data-bs-toggle="categoria"
                 >
-                  Menú
+                  Categorias
                 </a>
-                <ul className="dropdown-menu">
-                  <li>
-                    <a className="dropdown-item" href="menu.html">
-                      Pasteles
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="menu.html">
-                      Galletas
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="menu.html">
-                      Dulces
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="administrador.html">
-                      Administrador
-                    </a>
-                  </li>
-                </ul>
               </li>
             </ul>
-
             <form className="d-flex" role="search">
               <input
                 className="form-control me-2"
                 type="search"
-                placeholder="Buscar..."
-                aria-label="Buscar"
+                placeholder="Search"
+                aria-label="Search"
               />
-              <button className="btn btn-buscar" type="submit">
+              <button className="btn btn-outline-success" type="submit">
                 Buscar
               </button>
             </form>
+            {/* Botón dinámico */}
+            <a id="navbar-btn" className="btn btn-primary ms-3" href="#">
+              {/* Aquí puedes poner texto o ícono dinámico */}
+            </a>
+            <Link to="/carrito">
+              <img
+                //src={require("../assets/img/carrito-de-compras-512x512.png")}
+                alt="Carrito"
+                style={{
+                  width: "50px",
+                  height: "50px",
+                  marginLeft: "10px",
+                }}
+              />
+            </Link>
           </div>
         </div>
       </nav>

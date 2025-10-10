@@ -7,7 +7,7 @@ export default function Header() {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <img
-            //src={require("../assets/img/Logo - Level Up.png")}
+            src="assets/img/Logo - Level Up.png"
             alt="LevelUp"
             className="navbar-brand"
             style={{ height: "100px" }}
@@ -53,6 +53,11 @@ export default function Header() {
                 placeholder="Search"
                 aria-label="Search"
               />
+              <li className="btn btn-outline-success">
+                <Link className="nav-link active" to="/login">
+                  Login
+                </Link>
+              </li>
               <button className="btn btn-outline-success" type="submit">
                 Buscar
               </button>

@@ -5,6 +5,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Login from './pages/Login';
+import Catalogo from './pages/Catalogo';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/catalogo" element={<Catalogo />} />
       </Routes>
       <Footer />
     </div>

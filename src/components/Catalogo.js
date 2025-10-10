@@ -1,3 +1,6 @@
+import imagenes from "../assets/img/Catan.jpeg";
+
+
 let products = [
   {
     "id": 1,
@@ -6,7 +9,7 @@ let products = [
     "precio": 29990,
     "moneda": "CLP",
     "descripcion": "Un clásico juego de estrategia donde los jugadores compiten por colonizar y expandirse en la isla de Catan. Ideal para 3-4 jugadores y perfecto para noches de juego en familia o con amigos.",
-     "imagen": "assets/img/Catan.jpeg"
+     "imagen": "src\assets\img\Catan.jpeg"
   },
   {
     "id": 2,
@@ -15,7 +18,7 @@ let products = [
     "precio": 24990,
     "moneda": "CLP",
     "descripcion": "Un juego de colocación de fichas donde los jugadores construyen el paisaje alrededor de la fortaleza medieval de Carcassonne. Ideal para 2-5 jugadores y fácil de aprender.",
-    "imagen": "assets/img/Carcasonne.jpeg"
+    "imagen": "src"
   },
   {
     "id": 3,
@@ -91,8 +94,5 @@ let products = [
   }
 ];
 
-window.productosCatalogo = products;
-let productcontainer = document.getElementById("products");
-showproducts(products, productcontainer);
-
+export default products;
 

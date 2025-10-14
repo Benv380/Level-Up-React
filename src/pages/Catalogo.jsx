@@ -9,8 +9,8 @@ function Catalogo() {
           <div
             className="card h-100 shadow"
             style={{
-              backgroundColor: "#1E90FF",
-              color: "#39FF14",
+              backgroundColor: "#121213ff",
+              color: "#ffffffff",
               borderRadius: "8px",
               fontFamily: "'Roboto', sans-serif",
             }}
@@ -30,9 +30,9 @@ function Catalogo() {
                 type="button"
                 className="cart-btn btn btn-outline-dark mt-auto fw-bold"
                 style={{
-                  backgroundColor: "#1E90FF",
-                  borderColor: "#39FF14",
-                  color: "#39FF14",
+                  backgroundColor: "#000000ff",
+                  borderColor: "#7f887dff",
+                  color: "#ffffffff",
                   fontFamily: "'Roboto', sans-serif",
                 }}
                 data-product-id={p.id}

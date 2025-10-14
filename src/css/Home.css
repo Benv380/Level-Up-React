@@ -80,7 +80,7 @@ body {
   .sidebar-game:hover,
   .sidebar-game.active {
     display: flex;
-    background-color: #39FF14;
+    background-color: #4e534d;
     cursor: pointer;
   }
   
@@ -109,7 +109,7 @@ body {
   }
   
   .news span {
-    color: white;
+    color: rgb(170, 153, 153);
     font-family: 'Roboto', sans-serif;
   }
   
@@ -145,13 +145,13 @@ body {
   }
   
   .button {
-    background-color: #39FF14;
+    background-color: #0a0a0a;
     font-family: 'Roboto', sans-serif;
-    color: #1E90FF;
+    color: #4e534d;
   }
   
   .button:hover {
-    background-color: #32CD32;
+    background-color: #4e534d;
     color: gray;
   }
   
@@ -170,26 +170,18 @@ body {
     box-shadow: 0 8px 20px rgb(0 0 0 / 0.15);
   }
   
-  .card-title {
-    font-weight: 700;
-    color: #333;
-  }
-  
-  .card-text {
-    color: #555;
-    font-size: 0.9rem;
-  }
+
   
   .btn-cotizar {
-    background-color: #1E90FF;
+    background-color: #000000;
     color: white;
     font-weight: 600;
     border-radius: 8px;
   }
   
   .btn-cotizar:hover {
-    background-color: #0d6efd;
-    color: #000;
+    background-color: #000000;
+    color: #ffffff;
   }
   
   .card-img-top {
@@ -224,9 +216,9 @@ body {
       --color-fondo: #000000;
       --color-texto: #FFFFFF;
       --color-texto-secundario: #D3D3D3;
-      --color-acento-azul: #1E90FF;
-      --color-acento-verde: #39FF14;
-      --color-error: #FF4757;
+      --color-acento-azul: #4e534d;
+      --color-acento-verde: #676d66;
+      --color-error: #2b2626;
       --color-exito: #2ED573;
   }
   
@@ -293,7 +285,7 @@ body {
   .form-input:focus {
       outline: none;
       border-color: var(--color-acento-azul);
-      box-shadow: 0 0 0 2px rgba(30, 144, 255, 0.2);
+      box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
   }
   
   .form-input::placeholder {
@@ -354,7 +346,7 @@ body {
   
   .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(57, 255, 20, 0.3);
+      box-shadow: 0 5px 15px #4e534d;
   }
   
   .btn-primary:active {
@@ -444,3 +436,100 @@ body {
     width: auto;           
     max-width: 400px;        
   }
+
+.navbar-level {
+  background-color: #262627 !important;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Botones estilo card */
+.btn-level {
+  background: #0f0f10;
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.30);
+  border-radius: 14px;
+  padding: 0.45rem 0.9rem;
+  font-weight: 600;
+}
+
+/* Input oscuro estilo card */
+.input-level {
+  background: #0b0b0c;
+  color: #e5e7eb;
+  border: 2px solid rgba(255, 255, 255, 0.30);
+  border-radius: 14px;
+}
+.input-level::placeholder {
+  color: #9ca3af;
+}
+.input-level:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
+}
+
+/* Botón/icono de carrito */
+.btn-icon-level {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #0f0f10;
+  border: 2px solid rgba(255, 255, 255, 0.30);
+  border-radius: 14px;
+  padding: 0.25rem 0.5rem;
+}
+
+.icon-cart {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+  filter: invert(1) brightness(1.2); 
+}
+
+.navbar-level,
+.navbar-level * {
+  --bs-secondary-color: #ffffff;
+  --bs-body-color: #ffffff;
+}
+
+/* Hover/active/focus igual que los botones */
+.navbar-level .nav-link.nav-level:hover,
+.navbar-level .nav-link.nav-level:focus,
+.navbar-level .nav-link.nav-level.active,
+.navbar-level .nav-link.nav-level[aria-current="page"] {
+  border-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08) inset;
+  transform: translateY(-1px);
+}
+
+/* Para que el contenedor ocupe toda la altura */
+html, body, #root {
+  height: 100%;
+}
+
+/* Shell del layout en columna */
+.app-shell {
+  min-height: 100dvh;            /* altura de la ventana */
+  display: flex;
+  flex-direction: column;
+}
+
+/* El main crece y empuja el footer hacia abajo */
+.app-content {
+  flex: 1 1 auto;
+}
+
+/* Estilo del footer */
+.site-footer {
+  text-align: center;
+  color: #ffffff;                
+  padding: 12px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  background: transparent;       
+}
+
+.site-footer p {
+  margin: 0;
+}
+

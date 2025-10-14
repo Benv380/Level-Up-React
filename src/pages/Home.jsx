@@ -99,7 +99,7 @@ export default function Home() {
             </div>
 
             <div className="news">
-                <h2 className="w-100 text-center mb-4" style={{color: "#39FF14"}}>Descubre lo nuevo</h2>
+                <h2 className="w-100 text-center mb-4" style={{color: "#ffffffff"}}>Descubre lo nuevo</h2>
 
                 {/* Noticia 1 */}
                 <div className="card" style={{width: "18rem"}}>
@@ -148,7 +148,7 @@ export default function Home() {
 
             <div className="events">
                 <div className="events">
-                    <h2 className="w-100 text-center mb-4" style={{color: "#39FF14"}}>Eventos Destacados</h2>
+                    <h2 className="w-100 text-center mb-4" style={{color: "#ffffffff"}}>Eventos Destacados</h2>
 
                     {/* Tarjetas de eventos */}
                     <div style={{display: "flex", gap: "20px", flexWrap: "wrap", justifyContent: "center"}}>
@@ -183,7 +183,7 @@ export default function Home() {
 
                     {/* Mapa con ubicaciones */}
                     <div className="maps">
-                        <h2 className="w-100 text-center mb-4" style={{color: "#39FF14"}}>Mapa de ubicaciones</h2>
+                        <h2 className="w-100 text-center mb-4" style={{color: "#ffffffff"}}>Mapa de ubicaciones</h2>
 
                         {/* Movistar Arena, Santiago */}
                         <div className="mapa-evento">
@@ -213,7 +213,7 @@ export default function Home() {
 
                     <div id="opinionsCarousel" className="carousel slide opinions w-100" data-bs-ride="carousel"
                         data-bs-interval="3000">
-                        <h2 className="text-center mb-4" style={{color: "#39FF14"}}>Opiniones de Nuestros Gamers</h2>
+                        <h2 className="text-center mb-4" style={{color: "#ffffffff"}}>Opiniones de Nuestros Gamers</h2>
                         <div className="carousel-inner">
 
 

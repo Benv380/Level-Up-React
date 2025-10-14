@@ -28,6 +28,23 @@
   color: #61dafb;
 }
 
+.card{
+  border: 2px solid rgba(255, 255, 255, 0.30); 
+  border-radius: 14px;                         
+  background: #0f0f10;                         
+}
+
+.card:hover {
+  border-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08) inset;
+}
+
+.card h3,
+.card.title {
+  color: #fff;
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -36,3 +53,4 @@
     transform: rotate(360deg);
   }
 }
+

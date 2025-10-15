@@ -1,17 +1,9 @@
-import '../css/Home.css';
-import { Scripts } from 'react-router-dom';
-import { useEffect } from "react";
-import {SideBar} from '../components/Utils';
-
 export default function Home() {
-        useEffect(() => {
-            SideBar();
-        }, []);
-
-
     return (
         <div className="container-fluid py-4">
             <div className="row">
+
+
                 <div className="col-lg-8 mb-3">
                     <div id="gameCarousel" className="carousel slide mx-auto" data-bs-ride="carousel"
                         data-bs-interval="5000">
@@ -76,8 +68,7 @@ export default function Home() {
                     </div>
                 </div>
 
-                <div className="col-lg-3" id="sidebar">
-                    
+                <div className="col-lg-3">
                     <div className="d-flex flex-column gap-3">
                         <div className="sidebar-game active" data-bs-target="#gameCarousel" data-bs-slide-to="0">
                             <img src="assets/img/Controlador xbox.jpeg" alt="Controlador Xbox" />

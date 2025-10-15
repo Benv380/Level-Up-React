@@ -58,6 +58,7 @@ export default function Header() {
             {/* DERECHA: login + carrito */}
             <div className="d-flex align-items-center gap-2 ms-auto">
               <Link to="/login" className="btn btn-level">Login</Link>
+              <Link to="/register" className="btn btn-level">Register</Link>
               <Link to="/carrito" className="btn btn-icon-level" aria-label="Carrito">
                 <img src={cartIcon} alt="Carrito" className="icon-cart" />
               </Link>

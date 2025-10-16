@@ -1,76 +1,84 @@
+import React, { useState } from "react";
 import { Helmet } from "react-helmet";
+import { iniciarSesion } from "../components/firebaseUtils";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const resultado = await iniciarSesion(email, password);
+
+    if (resultado.ok) {
+      alert(`✅ Bienvenido, ${resultado.datos.nombre}`);
+      navigate("/");
+    } else {
+      setError("Usuario o contraseña incorrecta");
+    }
+  };
+
   return (
     <div>
       <Helmet>
-        <title>Login</title>
-        <meta name="description" content="Página Login" />
+        <title>Iniciar Sesión | Level Up</title>
       </Helmet>
-      <main class="d-flex justify-content-center align-items-center">
-        <div class="w-50 w-md-25 text-center">
-          <h2>Inicio de sesión</h2>
-          <div class="mb-3">
-            <label for="usuario">Usuario:</label>
+      <main>
+        <div className="auth-header">
+          <h1 className="auth-title">Iniciar Sesión</h1>
+          <p className="auth-subtitle">Bienvenido de vuelta a Level-Up Gamer</p>
+        </div>
+        <form onSubmit={handleLogin} className="auth-form">
+          <div className="form-group">
+            <label htmlFor="email">Correo</label>
             <input
-              type="text"
-              name="usuario"
-              id="usuario"
-              class="form-control"
+              type="email"
+              id="email"
+              className="form-input"
+              placeholder="Correo"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </div>
-          <div class="mb-3">
-            <label for="contraseña">Contraseña:</label>
+          <div className="form-group">
+            <label htmlFor="password">Contraseña</label>
             <input
               type="password"
-              name="contraseña"
-              id="contrasena"
-              class="form-control"
+              id="password"
+              className="form-input"
+              placeholder="Contraseña"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </div>
-          <div class="mb-3">
-            <button id="btnLogin" class="btn button" type="button">
-              Login
-            </button>
-          </div>
+          <button type="submit" className="btn-primary">
+            Iniciar sesión
+          </button>
+          {error && (
+            <div className="mensaje-error" style={{ marginTop: "1rem" }}>
+              {error}
+            </div>
+          )}
+        </form>
+        <div className="auth-footer">
+          <p>
+            ¿No tienes cuenta?{" "}
+            <a href="/register" className="auth-link">
+              Regístrate aquí
+            </a>
+          </p>
+          <p>
+            <a href="/" className="auth-link">
+              Volver al inicio
+            </a>
+          </p>
         </div>
       </main>
-
-      <div
-        class="modal fade"
-        id="loginError"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">
-                Error
-              </h1>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <p>Usuario o contraseña incorrecta</p>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }

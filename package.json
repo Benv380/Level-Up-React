@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "boostrap": "^2.0.0",
     "bootstrap": "^5.3.8",
+    "firebase": "^12.4.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-helmet": "^6.1.0",

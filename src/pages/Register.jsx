@@ -1,62 +1,160 @@
+import React, { useState } from "react";
+import { registrarUsuario } from "../components/firebaseUtils";
+
 export default function Register() {
-    return(
-        <div>
-            <div class="auth-header">
-                <h1 class="auth-title">Crear Cuenta</h1>
-                <p class="auth-subtitle">Únete a la comunidad Level-Up Gamer</p>
-            </div>
+  const [formData, setFormData] = useState({
+    nombre: "",
+    numero: "",
+    fechaNacimiento: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    terminos: false,
+  });
 
-            <div id="mensaje" class="mensaje-error" style="display: none;"></div>
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === "checkbox" ? checked : value,
+    });
+  };
 
-            <form id="registerForm" class="auth-form">
-                <div class="form-group">
-                    <label for="nombre">Nombre Completo</label>
-                    <input type="text" id="nombre" class="form-input" required/>
-                </div>
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (formData.password !== formData.confirmPassword) {
+      alert("Las contraseñas no coinciden");
+      return;
+    }
+    if (!formData.terminos) {
+      alert("Debes aceptar los términos y condiciones");
+      return;
+    }
+    const resultado = await registrarUsuario(formData);
+    if (resultado.ok) {
+      alert("✅ Usuario registrado correctamente");
+      // Aquí puedes redirigir o limpiar el formulario si quieres
+    } else {
+      alert("Error: " + resultado.error);
+    }
+  };
 
-                <div class="form-group">
-                    <label for="email">Correo Electrónico</label>
-                    <input type="email" id="email" class="form-input" required/>
-                        <small id="emailHelp" style="color: var(--color-texto-secundario); display: none;">
-                            ¡Correo Duoc detectado! Obtendrás 20% de descuento permanente <span class="duoc-badge">DUOC</span>
-                        </small>
-                </div>
+  return (
+    <div>
+      <div className="auth-header">
+        <h1 className="auth-title">Crear Cuenta</h1>
+        <p className="auth-subtitle">Únete a la comunidad Level-Up Gamer</p>
+      </div>
 
-                <div class="form-group">
-                    <label for="password">Contraseña</label>
-                    <div class="password-container">
-                        <input type="password" id="password" class="form-input" required/>
-                            <button type="button" class="password-toggle" onclick="togglePassword('password', 'eyeIcon')">
-                                <i id="eyeIcon" class="fas fa-eye"></i>
-                            </button>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="confirmPassword">Confirmar Contraseña</label>
-                    <input type="password" id="confirmPassword" class="form-input" required/>
-                </div>
-
-                <div class="form-group">
-                    <label for="fechaNacimiento">Fecha de Nacimiento</label>
-                    <input type="date" id="fechaNacimiento" class="form-input" required/>
-                        <small style="color: var(--color-texto-secundario);">Debes ser mayor de 18 años</small>
-                </div>
-
-                <div class="checkbox-group">
-                    <input type="checkbox" id="terminos" required/>
-                        <label for="terminos">Acepto los términos y condiciones</label>
-                </div>
-
-                <button type="submit" class="btn-primary">
-                    <i class="fas fa-user-plus"></i> Crear Cuenta
-                </button>
-            </form>
-
-            <div class="auth-footer">
-                <p>¿Ya tienes cuenta? <a href="login.html" class="auth-link">Inicia sesión aquí</a></p>
-                <p><a href="index.html" class="auth-link">Volver al inicio</a></p>
-            </div>
+      <form onSubmit={handleSubmit} className="auth-form">
+        <div className="form-group">
+          <label htmlFor="nombre">Nombre</label>
+          <input
+            name="nombre"
+            id="nombre"
+            className="form-input"
+            placeholder="Nombre"
+            value={formData.nombre}
+            onChange={handleChange}
+            required
+          />
         </div>
-    );
+        <div className="form-group">
+          <label htmlFor="numero">Número</label>
+          <input
+            name="numero"
+            id="numero"
+            className="form-input"
+            placeholder="Número"
+            value={formData.numero}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="fechaNacimiento">Fecha de Nacimiento</label>
+          <input
+            name="fechaNacimiento"
+            id="fechaNacimiento"
+            className="form-input"
+            type="date"
+            value={formData.fechaNacimiento}
+            onChange={handleChange}
+            required
+          />
+          <small style={{ color: "var(--color-texto-secundario)" }}>
+            Debes ser mayor de 18 años
+          </small>
+        </div>
+        <div className="form-group">
+          <label htmlFor="email">Correo</label>
+          <input
+            name="email"
+            id="email"
+            className="form-input"
+            type="email"
+            placeholder="Correo"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Contraseña</label>
+          <input
+            name="password"
+            id="password"
+            className="form-input"
+            type="password"
+            placeholder="Contraseña"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="confirmPassword">Confirmar Contraseña</label>
+          <input
+            name="confirmPassword"
+            id="confirmPassword"
+            className="form-input"
+            type="password"
+            placeholder="Confirmar Contraseña"
+            value={formData.confirmPassword}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="checkbox-group">
+          <input
+            type="checkbox"
+            id="terminos"
+            name="terminos"
+            checked={formData.terminos}
+            onChange={handleChange}
+            required
+          />
+          <label htmlFor="terminos">Acepto los términos y condiciones</label>
+        </div>
+        <button type="submit" className="btn-primary">
+          <i className="fas fa-user-plus"></i> Crear Cuenta
+        </button>
+      </form>
+      <div className="auth-footer">
+        <p>
+          ¿Ya tienes cuenta?{" "}
+          <a href="/login" className="auth-link">
+            Inicia sesión aquí
+          </a>
+        </p>
+        <p>
+          <a href="/" className="auth-link">
+            Volver al inicio
+          </a>
+        </p>
+      </div>
+    </div>
+  );
 }
+
+

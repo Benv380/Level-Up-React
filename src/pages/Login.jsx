@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import { iniciarSesion } from "../components/firebaseUtils";
 import { useNavigate } from "react-router-dom";
+import "../css/Login.css";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -26,59 +27,65 @@ export default function Login() {
       <Helmet>
         <title>Iniciar Sesión | Level Up</title>
       </Helmet>
-      <main>
-        <div className="auth-header">
-          <h1 className="auth-title">Iniciar Sesión</h1>
-          <p className="auth-subtitle">Bienvenido de vuelta a Level-Up Gamer</p>
+      <div className="login-container">
+        <div className="background">
+          <div className="shape"></div>
+          <div className="shape"></div>
         </div>
-        <form onSubmit={handleLogin} className="auth-form">
-          <div className="form-group">
-            <label htmlFor="email">Correo</label>
-            <input
-              type="email"
-              id="email"
-              className="form-input"
-              placeholder="Correo"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
+        <main>
+          <div className="auth-header">
+            <h1 className="auth-title" id="title-login">Iniciar Sesión</h1>
+            <p className="auth-subtitle">Bienvenido de vuelta a Level-Up Gamer</p>
           </div>
-          <div className="form-group">
-            <label htmlFor="password">Contraseña</label>
-            <input
-              type="password"
-              id="password"
-              className="form-input"
-              placeholder="Contraseña"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <button type="submit" className="btn-primary">
-            Iniciar sesión
-          </button>
-          {error && (
-            <div className="mensaje-error" style={{ marginTop: "1rem" }}>
-              {error}
+          <form onSubmit={handleLogin} className="auth-form">
+            <div className="form-group">
+              <label htmlFor="email">Correo</label>
+              <input
+                type="email"
+                id="email"
+                className="form-input"
+                placeholder="Correo"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
             </div>
-          )}
-        </form>
-        <div className="auth-footer">
-          <p>
-            ¿No tienes cuenta?{" "}
-            <a href="/register" className="auth-link">
-              Regístrate aquí
-            </a>
-          </p>
-          <p>
-            <a href="/" className="auth-link">
-              Volver al inicio
-            </a>
-          </p>
-        </div>
-      </main>
+            <div className="form-group">
+              <label htmlFor="password">Contraseña</label>
+              <input
+                type="password"
+                id="password"
+                className="form-input"
+                placeholder="Contraseña"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+            <button type="submit" className="btn-primary">
+              Iniciar sesión
+            </button>
+            {error && (
+              <div className="mensaje-error" style={{ marginTop: "1rem" }}>
+                {error}
+              </div>
+            )}
+          </form>
+          <div className="auth-footer">
+            <p>
+              ¿No tienes cuenta?{" "}
+              <a href="/register" className="auth-link">
+                Regístrate aquí
+              </a>
+            </p>
+            <p>
+              <a href="/" className="auth-link">
+                Volver al inicio
+              </a>
+            </p>
+          </div>
+        </main>
+      </div>
     </div>
   );
 }

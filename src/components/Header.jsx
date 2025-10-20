@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import logo from "../assets/img/Logo - Level Up.png";
 import cartIcon from "../assets/img/carrito-de-compras-512x512.png";
+import { useAuth } from "../components/authContext"; 
 
 export default function Header() {
+  const { user, logout } = useAuth();
+
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-dark navbar-level">
@@ -48,17 +50,30 @@ export default function Header() {
                 <input
                   className="form-control input-level"
                   type="search"
-                  placeholder="Search"
-                  aria-label="Search"
+                  placeholder="Buscar"
+                  aria-label="Buscar"
                 />
                 <button className="btn btn-level" type="submit">Buscar</button>
               </form>
             </div>
 
-            {/* DERECHA: login + carrito */}
+            {/* DERECHA: login / logout + carrito */}
             <div className="d-flex align-items-center gap-2 ms-auto">
-              <Link to="/login" className="btn btn-level">Login</Link>
-              <Link to="/register" className="btn btn-level">Register</Link>
+              {user ? (
+                <>
+                  <span className="text-light me-2">
+                    👤 {user.displayName || user.email}
+                  </span>
+                  <button onClick={logout} className="btn btn-outline-light btn-sm">
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link to="/login" className="btn btn-level">Login</Link>
+                  <Link to="/register" className="btn btn-level">Register</Link>
+                </>
+              )}
               <Link to="/carrito" className="btn btn-icon-level" aria-label="Carrito">
                 <img src={cartIcon} alt="Carrito" className="icon-cart" />
               </Link>

@@ -10,21 +10,24 @@ import { Routes, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import './App.css';
-import { AuthProvider } from './components/authContext';
+import { AuthProvider } from './components/context/authContext';
+import { CartProvider } from './components/context/CartContext';
 
 function App() {
   return (
     <AuthProvider>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/catalogo" element={<Catalogo />} />
-        <Route path="/nosotros" element={<Nosotros />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/carrito" element={<Carrito />} />
-      </Routes>
-      <Footer />
+      <CartProvider>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/catalogo" element={<Catalogo />} />
+          <Route path="/nosotros" element={<Nosotros />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/carrito" element={<Carrito />} />
+        </Routes>
+        <Footer />
+      </CartProvider>
     </AuthProvider>
   );
 }

@@ -1,19 +1,15 @@
 import productos from "../components/Catalogo";
-import { addToCart } from "../components/Utils";
+import { useCart } from "../components/context/CartContext";
 
-addToCart();
+
 
 function Catalogo() {
-
-  const agregarCarrito = (productId) => {
-    addToCart(productId);
-    alert("Producto añadido al carrito 🛒");
-  };
+  const { addToCart } = useCart();
 
   return (
     <div className="row">
-      {productos.map((p) => (
-        <div key={p.id} className="col-12 col-sm-6 col-md-3 col-lg-3 mb-4">
+      {productos.map((producto) => (
+        <div key={producto.id} className="col-12 col-sm-6 col-md-3 col-lg-3 mb-4">
           <div
             className="card h-100 shadow"
             style={{
@@ -24,16 +20,16 @@ function Catalogo() {
             }}
           >
             <img
-              src={p.imagen || "https://via.placeholder.com/300"}
+              src={producto.imagen}
               className="card-img-top rounded-top"
-              alt={p.nombre}
+              alt={producto.nombre}
             />
             <div className="card-body d-flex flex-column">
-              <h4 className="card-title">{p.nombre}</h4>
+              <h4 className="card-title">{producto.nombre}</h4>
               <p className="mb-1">
-                <strong>{p.categoria}</strong>
+                <strong>{producto.categoria}</strong>
               </p>
-              <p className="text-muted medium">{p.descripcion}</p>
+              <p className="text-muted medium">{producto.descripcion}</p>
               <button
                 type="button"
                 className="cart-btn btn btn-outline-dark mt-auto fw-bold"
@@ -43,8 +39,7 @@ function Catalogo() {
                   color: "#ffffffff",
                   fontFamily: "'Roboto', sans-serif",
                 }}
-                data-product-id={p.id}
-                onClick={() => agregarCarrito(p.id)}
+                onClick={() => addToCart(producto)}
               >
                 Agregar al carro
               </button>

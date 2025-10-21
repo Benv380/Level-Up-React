@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import '../css/Carrito.css';
-import { useAuth } from "../components/authContext";
+import { useAuth } from "../components/context/authContext";
+import { addToCart,getCartItems } from "../components/Utils";
 
 const Carrito = () => {         //funcion para correo 
   const { user } = useAuth();
@@ -11,10 +12,16 @@ const Carrito = () => {         //funcion para correo
       setEmail(user.email);
     }
   }, [user]);
+
+  //funcion para productos del carrito
+
+  function getCartItems() {
+    return JSON.parse(localStorage.getItem("cart")) || [];
+  }
     
   return (
     <section className="carrito">
-      <h1 className="titulo">/YOUR CART</h1>
+      <h1 className="titulo">Tu Carrito</h1>
 
       <div className="carrito-container">
         <form className="carrito-form">
@@ -70,11 +77,20 @@ const Carrito = () => {         //funcion para correo
 
         {/* Productos del carrito */}
         <div className="carrito-productos">
-
+            {getCartItems().length === 0 ? (
+              <p>No hay productos en el carrito</p>
+            ) : (
+              getCartItems().map((producto) => (
+                <div key={producto.id} className="producto">
+                  <h2>{producto.nombre}</h2>
+                  <p>Precio: ${producto.precio}</p>
+                </div>
+              ))
+            )}
 
           <div className="total">
             <p>Total</p>
-            
+            <p>${getCartItems().reduce((acc, producto) => acc + producto.precio, 0)}</p>
           </div>
 
           <button className="btn-pago">Payment</button>

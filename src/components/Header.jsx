@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/img/Logo - Level Up.png";
 import cartIcon from "../assets/img/carrito-de-compras-512x512.png";
-import { useAuth } from "../components/authContext"; 
+import { useAuth } from "../components/context/authContext"; 
 import '../pages/Carrito'
 
 export default function Header() {

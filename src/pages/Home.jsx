@@ -9,10 +9,6 @@ export default function Home() {
         SideBar();
     }, []);
 
-    const agregarCarrito = (productId) => {
-        addToCart(productId);
-        alert("Producto añadido al carrito 🛒");
-    };
 
     return (
         <div className="container-fluid py-4">

@@ -1,4 +1,3 @@
-// src/utils/auth.js
 import { auth, db } from "../firebase/firebaseConfig";
 import {
   createUserWithEmailAndPassword,
@@ -8,7 +7,7 @@ import {
 import { doc, setDoc, getDoc } from "firebase/firestore";
 
 /**
- * 🔹 Registrar nuevo usuario con datos extra en Firestore
+ * Registrar nuevo usuario con datos extra en Firestore
  */
 export const registrarUsuario = async (nombre, numero, fechaNacimiento, email, password) => {
   try {
@@ -33,7 +32,7 @@ export const registrarUsuario = async (nombre, numero, fechaNacimiento, email, p
 };
 
 /**
- * 🔹 Iniciar sesión con correo y contraseña
+ * Iniciar sesión con correo y contraseña
  */
 export const iniciarSesion = async (email, password) => {
   try {
@@ -56,7 +55,7 @@ export const iniciarSesion = async (email, password) => {
 };
 
 /**
- * 🔹 Cerrar sesión
+ * Cerrar sesión
  */
 export const cerrarSesion = async () => {
   try {

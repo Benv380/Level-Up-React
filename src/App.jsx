@@ -4,11 +4,13 @@ import Home from './pages/Home';
 import Catalogo from './pages/Catalogo';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Nosotros from './pages/Nosotros';
+import Carrito from './pages/Carrito';
 import { Routes, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import './App.css';
-import { AuthProvider } from './components/authContext'; // ruta correcta
+import { AuthProvider } from './components/authContext';
 
 function App() {
   return (
@@ -17,8 +19,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/catalogo" element={<Catalogo />} />
+        <Route path="/nosotros" element={<Nosotros />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/carrito" element={<Carrito />} />
       </Routes>
       <Footer />
     </AuthProvider>

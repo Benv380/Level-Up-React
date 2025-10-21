@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "../assets/img/Logo - Level Up.png";
 import cartIcon from "../assets/img/carrito-de-compras-512x512.png";
 import { useAuth } from "../components/authContext"; 
+import '../pages/Carrito'
 
 export default function Header() {
   const { user, logout } = useAuth();
@@ -42,7 +43,7 @@ export default function Header() {
                   <Link className="nav-link nav-level" to="/catalogo">Catálogo</Link>
                 </li>
                 <li className="nav-item categorias">
-                  <a className="nav-link nav-level" href="#">Categorías</a>
+                  <Link className="nav-link nav-level" to="/nosotros">Nosotros</Link>
                 </li>
               </ul>
 
@@ -74,7 +75,7 @@ export default function Header() {
                   <Link to="/register" className="btn btn-level">Register</Link>
                 </>
               )}
-              <Link to="/carrito" className="btn btn-icon-level" aria-label="Carrito">
+              <Link to="/Carrito" className="btn btn-icon-level" aria-label="Carrito">
                 <img src={cartIcon} alt="Carrito" className="icon-cart" />
               </Link>
             </div>

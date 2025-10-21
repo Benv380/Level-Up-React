@@ -1,7 +1,7 @@
 import '../css/Home.css';
 import { Scripts } from 'react-router-dom';
 import { useEffect } from "react";
-import { SideBar } from '../components/Utils';
+import { SideBar, addToCart } from '../components/Utils';
 
 
 export default function Home() {
@@ -9,6 +9,10 @@ export default function Home() {
         SideBar();
     }, []);
 
+    const agregarCarrito = (productId) => {
+        addToCart(productId);
+        alert("Producto añadido al carrito 🛒");
+    };
 
     return (
         <div className="container-fluid py-4">
@@ -24,8 +28,8 @@ export default function Home() {
                                     <h2 className="fw-bold">Controlador Inalámbrico Xbox Series X</h2>
                                     <p>Ofrece una experiencia de juego cómoda con botones mapeables y una respuesta
                                         táctil mejorada. Compatible con consolas Xbox y PC.</p>
-                                    <a href="#" className="btn btn-light me-2">Más información</a>
-                                    <a href="#" className="btn btn-outline-light">+ Lista de deseos</a>
+                                    <a href="/catalogo" className="btn btn-light me-2">Más información</a>
+                                    <a href="/catalogo" className="btn btn-outline-light" >+ Agregar al carro</a>
                                 </div>
                             </div>
 
@@ -36,8 +40,8 @@ export default function Home() {
                                     <p>Un clásico juego de estrategia donde los jugadores compiten por colonizar y
                                         expandirse en la isla de Catan. Ideal para 3-4 jugadores y perfecto para noches
                                         de juego en familia o con amigos.</p>
-                                    <a href="#" className="btn btn-light me-2">Más información</a>
-                                    <a href="#" className="btn btn-outline-light">+ Lista de deseos</a>
+                                    <a href="/catalogo" className="btn btn-light me-2">Más información</a>
+                                    <a href="/catalogo" className="btn btn-outline-light">+ Agregar al carro</a>
                                 </div>
                             </div>
 
@@ -47,8 +51,8 @@ export default function Home() {
                                     <h2 className="fw-bold">Ps5</h2>
                                     <p>La consola de última generación de Sony, que ofrece gráficos impresionantes y
                                         tiempos de carga ultrarrápidos para una experiencia de juego inmersiva.</p>
-                                    <a href="#" className="btn btn-light me-2">Más información</a>
-                                    <a href="#" className="btn btn-outline-light">+ Lista de deseos</a>
+                                    <a href="/catalogo" className="btn btn-light me-2">Más información</a>
+                                    <a href="/catalogo" className="btn btn-outline-light">+ Agregar al carro</a>
                                 </div>
                             </div>
                             <div className="carousel-item">
@@ -57,8 +61,8 @@ export default function Home() {
                                 <div className="carousel-caption">
                                     <h2 className="fw-bold">Juego de mesa Carcassonne</h2>
                                     <p>Construye un paisaje medieval mientras colocas tus fichas estratégicamente.</p>
-                                    <a href="#" className="btn btn-light me-2">Más información</a>
-                                    <a href="#" className="btn btn-outline-light">+ Lista de deseos</a>
+                                    <a href="/catalogo" className="btn btn-light me-2">Más información</a>
+                                    <a href="/catalogo" className="btn btn-outline-light">+ Agregar al carro</a>
                                 </div>
                             </div>
                             <div className="carousel-item">
@@ -68,8 +72,8 @@ export default function Home() {
                                     <h2 className="fw-bold">Mouse Gamer Logitech G502 HERO</h2>
                                     <p>Con sensor de alta precisión y botones personalizables, este mouse es ideal para
                                         gamers que buscan un control preciso y personalización.</p>
-                                    <a href="#" className="btn btn-light me-2">Más información</a>
-                                    <a href="#" className="btn btn-outline-light">+ Lista de deseos</a>
+                                    <a href="/catalogo" className="btn btn-light me-2">Más información</a>
+                                    <a href="/catalogo" className="btn btn-outline-light">+ Agregar al carro</a>
                                 </div>
                             </div>
                         </div>

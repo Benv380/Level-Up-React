@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #0f0f1a;
+  color: #f5f5f5;
+}
+
+.nosotros {
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #111827, #1f2937);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nosotros-container {
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px;
+}
+
+.nosotros-texto {
+  flex: 1 1 500px;
+}
+
+.titulo {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #00bcd4;
+}
+
+.descripcion {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  color: #d1d5db;
+}
+
+.mision-vision {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  flex: 1 1 300px;
+  background-color: #1e293b;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 188, 212, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 188, 212, 0.25);
+}
+
+.card h2 {
+  color: #00bcd4;
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+}
+
+.card p {
+  color: #e5e7eb;
+  line-height: 1.6;
+}
+
+.nosotros-imagen {
+  flex: 1 1 400px;
+  display: flex;
+  justify-content: center;
+}
+
+.nosotros-imagen img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 188, 212, 0.2);
+  object-fit: cover;
+}
+
+/* Responsividad */
+@media (max-width: 900px) {
+  .nosotros-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nosotros-imagen {
+    order: -1;
+  }
+}

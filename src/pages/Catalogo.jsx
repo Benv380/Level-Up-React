@@ -1,9 +1,17 @@
 import productos from "../components/Catalogo";
+import { addToCart } from "../components/Utils";
 
+addToCart();
 
 function Catalogo() {
+
+  const agregarCarrito = (productId) => {
+    addToCart(productId);
+    alert("Producto añadido al carrito 🛒");
+  };
+
   return (
-     <div className="row">
+    <div className="row">
       {productos.map((p) => (
         <div key={p.id} className="col-12 col-sm-6 col-md-3 col-lg-3 mb-4">
           <div
@@ -36,6 +44,7 @@ function Catalogo() {
                   fontFamily: "'Roboto', sans-serif",
                 }}
                 data-product-id={p.id}
+                onClick={() => agregarCarrito(p.id)}
               >
                 Agregar al carro
               </button>

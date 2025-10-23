@@ -60,10 +60,16 @@ export default function Header() {
 
             {/* DERECHA: login / logout + carrito */}
             <div className="d-flex align-items-center gap-2 ms-auto">
-              {user ? (
+
+             
+
+
+              { 
+               
+              user ? (
                 <>
                   <span className="text-light me-2">
-                    👤 {user.displayName || user.email}
+                    👤 { user.displayName || user.email }
                   </span>
                   <button onClick={logout} className="btn btn-outline-light btn-sm">
                     Logout

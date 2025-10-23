@@ -31,17 +31,18 @@ export const registrarUsuario = async (datos) => {
 // 🔹 Iniciar sesión
 export const iniciarSesion = async (email, password) => {
   try {
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    const uid = userCredential.user.uid;
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const uid = userCredential.user.uid;
 
-    // Obtener los datos del usuario desde Firestore
-    const docSnap = await getDoc(doc(db, "usuarios", uid));
+        // Obtener los datos del usuario desde Firestore
+        const docSnap = await getDoc(doc(db, "usuarios", uid));
 
-    if (docSnap.exists()) {
-      return { ok: true, datos: docSnap.data() };
-    } else {
-      return { ok: false, error: "No se encontraron datos del usuario" };
-    }
+        if (docSnap.exists()) {
+          return { ok: true, datos: docSnap.data() };
+        } else {
+          return { ok: false, error: "No se encontraron datos del usuario" };
+        }
+        
   } catch (error) {
     console.error("Error al iniciar sesión:", error.message);
     return { ok: false, error: error.message };

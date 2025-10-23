@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { registrarUsuario } from "../components/firebaseUtils";
+import "../css/Registro.css";
 
 export default function Register() {
   const [formData, setFormData] = useState({

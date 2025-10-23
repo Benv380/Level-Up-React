@@ -1,0 +1,181 @@
+/* Ajustado para el markup actual en Register.jsx:
+   - Register.jsx no tiene un contenedor .register-container ni .register-card,
+     así que estos estilos hacen que .auth-header + .auth-form se vean como una tarjeta
+     centrada sin modificar el JSX.
+*/
+
+/* Variables */
+:root{
+  --bg: #080710;
+  --card: #23232b;
+  --input-bg: #2d2d37;
+  --muted: #bdbdbd;
+  --accent: #42a5f5;
+  --text: #fff;
+  --secondary-text: #bdbdbd;
+}
+
+/* Reset */
+*:before,
+*:after{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background: var(--bg);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Centrado de la "tarjeta" sin cambiar JSX:
+   Aplica ancho, centrado y sombra a .auth-header y .auth-form para que juntos
+   parezcan una sola tarjeta. */
+.auth-header,
+.auth-form {
+  width: 400px;
+  max-width: 92%;
+  margin: 48px auto 0;
+  box-sizing: border-box;
+}
+
+/* Header como parte superior de la tarjeta */
+.auth-header {
+  background: var(--card);
+  padding: 24px 26px 12px 26px;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 6px 24px rgba(8,7,16,0.45);
+}
+
+/* Quitar separación entre header y form para que parezcan una sola tarjeta */
+.auth-header + .auth-form {
+  margin-top: 0;
+}
+
+/* Formulario como parte inferior de la tarjeta */
+.auth-form {
+  background: var(--card);
+  padding: 22px 26px 26px 26px;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 6px 24px rgba(8,7,16,0.45);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 1;
+}
+
+/* Títulos y subtítulos */
+.auth-title {
+  text-align: center;
+  color: var(--text);
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+}
+.auth-subtitle {
+  text-align: center;
+  color: var(--secondary-text);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Grupos de formulario y campos */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.form-input,
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 6px;
+  border: none;
+  background: var(--input-bg);
+  color: var(--text);
+  font-size: 1rem;
+  outline: none;
+  box-sizing: border-box;
+}
+input::placeholder,
+.form-input::placeholder {
+  color: var(--muted);
+}
+
+/* Checkbox */
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+}
+.checkbox-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+.checkbox-group label {
+  margin: 0;
+  color: var(--text);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* Botón principal */
+.btn-primary {
+  width: 100%;
+  padding: 14px 0;
+  border: none;
+  border-radius: 6px;
+  background: #fff;
+  color: #23232b;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: background 0.15s;
+}
+.btn-primary:hover {
+  background: #f5f5f5;
+}
+
+/* Footer y enlaces (debajo de la "tarjeta") */
+.auth-footer {
+  text-align: center;
+  margin: 18px auto 36px;
+  color: var(--secondary-text);
+  font-size: 0.95rem;
+  width: 400px;
+  max-width: 92%;
+}
+.auth-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+.auth-link:hover { text-decoration: underline; }
+
+/* Mensajes */
+.mensaje-error {
+  color: #ff5252;
+  background: var(--input-bg);
+  border-radius: 4px;
+  padding: 8px;
+  text-align: center;
+  margin-top: 8px;
+  font-size: 0.95rem;
+}
+
+/* Pequeños ajustes responsivos */
+@media (max-width: 480px) {
+  .auth-header,
+  .auth-form,
+  .auth-footer {
+    margin-top: 28px;
+  }
+  .auth-title { font-size: 1.6rem; }
+  .auth-header { padding: 18px 16px 10px 16px; }
+  .auth-form { padding: 16px 16px 18px 16px; }
+}

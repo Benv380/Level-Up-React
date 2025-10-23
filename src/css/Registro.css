@@ -1,10 +1,4 @@
-/* Ajustado para el markup actual en Register.jsx:
-   - Register.jsx no tiene un contenedor .register-container ni .register-card,
-     así que estos estilos hacen que .auth-header + .auth-form se vean como una tarjeta
-     centrada sin modificar el JSX.
-*/
 
-/* Variables */
 :root{
   --bg: #080710;
   --card: #23232b;
@@ -15,7 +9,6 @@
   --secondary-text: #bdbdbd;
 }
 
-/* Reset */
 *:before,
 *:after{
   padding: 0;
@@ -27,9 +20,6 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-/* Centrado de la "tarjeta" sin cambiar JSX:
-   Aplica ancho, centrado y sombra a .auth-header y .auth-form para que juntos
-   parezcan una sola tarjeta. */
 .auth-header,
 .auth-form {
   width: 400px;
@@ -38,7 +28,7 @@ body {
   box-sizing: border-box;
 }
 
-/* Header como parte superior de la tarjeta */
+
 .auth-header {
   background: var(--card);
   padding: 24px 26px 12px 26px;
@@ -46,12 +36,12 @@ body {
   box-shadow: 0 6px 24px rgba(8,7,16,0.45);
 }
 
-/* Quitar separación entre header y form para que parezcan una sola tarjeta */
+
 .auth-header + .auth-form {
   margin-top: 0;
 }
 
-/* Formulario como parte inferior de la tarjeta */
+
 .auth-form {
   background: var(--card);
   padding: 22px 26px 26px 26px;
@@ -63,7 +53,6 @@ body {
   z-index: 1;
 }
 
-/* Títulos y subtítulos */
 .auth-title {
   text-align: center;
   color: var(--text);
@@ -78,7 +67,6 @@ body {
   font-size: 0.95rem;
 }
 
-/* Grupos de formulario y campos */
 .form-group {
   display: flex;
   flex-direction: column;
@@ -103,7 +91,6 @@ input::placeholder,
   color: var(--muted);
 }
 
-/* Checkbox */
 .checkbox-group {
   display: flex;
   align-items: center;
@@ -123,7 +110,6 @@ input::placeholder,
   font-size: 0.95rem;
 }
 
-/* Botón principal */
 .btn-primary {
   width: 100%;
   padding: 14px 0;
@@ -141,7 +127,6 @@ input::placeholder,
   background: #f5f5f5;
 }
 
-/* Footer y enlaces (debajo de la "tarjeta") */
 .auth-footer {
   text-align: center;
   margin: 18px auto 36px;
@@ -157,7 +142,6 @@ input::placeholder,
 }
 .auth-link:hover { text-decoration: underline; }
 
-/* Mensajes */
 .mensaje-error {
   color: #ff5252;
   background: var(--input-bg);
@@ -168,7 +152,6 @@ input::placeholder,
   font-size: 0.95rem;
 }
 
-/* Pequeños ajustes responsivos */
 @media (max-width: 480px) {
   .auth-header,
   .auth-form,

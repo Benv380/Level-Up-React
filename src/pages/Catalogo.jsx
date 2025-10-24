@@ -11,7 +11,7 @@ function Catalogo() {
       {productos.map((producto) => (
         <div key={producto.id} className="col-12 col-sm-6 col-md-3 col-lg-3 mb-4">
           <div
-            className="card h-100 shadow"
+            className="card h-100 shadow" data-testid="producto"
             style={{
               backgroundColor: "#121213ff",
               color: "#ffffffff",

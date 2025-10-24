@@ -11,7 +11,7 @@ export default function Home() {
 
 
     return (
-        <div className="container-fluid py-4">
+        <div className="container-fluid py-4" id='home-container'>
             <div className="row">
                 <div className="col-lg-8 mb-3">
                     <div id="gameCarousel" className="carousel slide mx-auto" data-bs-ride="carousel"
@@ -22,8 +22,6 @@ export default function Home() {
                                     alt="Mando Xbox Series Elite" />
                                 <div className="carousel-caption">
                                     <h2 className="fw-bold">Controlador Inalámbrico Xbox Series X</h2>
-                                    <p>Ofrece una experiencia de juego cómoda con botones mapeables y una respuesta
-                                        táctil mejorada. Compatible con consolas Xbox y PC.</p>
                                     <a href="/catalogo" className="btn btn-light me-2">Más información</a>
                                     <a href="/catalogo" className="btn btn-outline-light" >+ Agregar al carro</a>
                                 </div>
@@ -33,9 +31,6 @@ export default function Home() {
                                 <img src="assets/img/Catan.jpeg" className="d-block w-100" alt="Juego de mesa Catan" />
                                 <div className="carousel-caption">
                                     <h2 className="fw-bold">Juego de mesa Catan</h2>
-                                    <p>Un clásico juego de estrategia donde los jugadores compiten por colonizar y
-                                        expandirse en la isla de Catan. Ideal para 3-4 jugadores y perfecto para noches
-                                        de juego en familia o con amigos.</p>
                                     <a href="/catalogo" className="btn btn-light me-2">Más información</a>
                                     <a href="/catalogo" className="btn btn-outline-light">+ Agregar al carro</a>
                                 </div>
@@ -45,8 +40,6 @@ export default function Home() {
                                 <img src="assets/img/Playstation5.jpeg" className="d-block w-100" alt="Playstation5" />
                                 <div className="carousel-caption">
                                     <h2 className="fw-bold">Ps5</h2>
-                                    <p>La consola de última generación de Sony, que ofrece gráficos impresionantes y
-                                        tiempos de carga ultrarrápidos para una experiencia de juego inmersiva.</p>
                                     <a href="/catalogo" className="btn btn-light me-2">Más información</a>
                                     <a href="/catalogo" className="btn btn-outline-light">+ Agregar al carro</a>
                                 </div>
@@ -56,7 +49,6 @@ export default function Home() {
                                     alt="Juego de mesa Carcassonne" />
                                 <div className="carousel-caption">
                                     <h2 className="fw-bold">Juego de mesa Carcassonne</h2>
-                                    <p>Construye un paisaje medieval mientras colocas tus fichas estratégicamente.</p>
                                     <a href="/catalogo" className="btn btn-light me-2">Más información</a>
                                     <a href="/catalogo" className="btn btn-outline-light">+ Agregar al carro</a>
                                 </div>
@@ -66,8 +58,6 @@ export default function Home() {
                                     alt="Mouse Gamer Logitech G502 HERO" />
                                 <div className="carousel-caption">
                                     <h2 className="fw-bold">Mouse Gamer Logitech G502 HERO</h2>
-                                    <p>Con sensor de alta precisión y botones personalizables, este mouse es ideal para
-                                        gamers que buscan un control preciso y personalización.</p>
                                     <a href="/catalogo" className="btn btn-light me-2">Más información</a>
                                     <a href="/catalogo" className="btn btn-outline-light">+ Agregar al carro</a>
                                 </div>
@@ -222,7 +212,6 @@ export default function Home() {
                     data-bs-interval="3000">
                     <h2 className="text-center mb-4" style={{ color: "#ffffffff" }}>Opiniones de Nuestros Gamers</h2>
                     <div className="carousel-inner">
-
 
                         <div className="carousel-item active">
                             <div className="d-flex justify-content-center">

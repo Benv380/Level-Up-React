@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "../assets/img/Logo - Level Up.png";
 import cartIcon from "../assets/img/carrito-de-compras-512x512.png";
 import { useAuth } from "../components/context/authContext"; 
-import '../pages/Carrito'
+import '../pages/Carrito';
 
 export default function Header() {
   const { user, logout } = useAuth();
@@ -61,14 +61,10 @@ export default function Header() {
             {/* DERECHA: login / logout + carrito */}
             <div className="d-flex align-items-center gap-2 ms-auto">
 
-             
-
-
               { 
-               
-              user ? (
-                <>
-                  <span className="text-light me-2">
+                user ? (
+                  <>
+                    <span className="text-light me-2">
                     👤 { user.displayName || user.email }
                   </span>
                   <button onClick={logout} className="btn btn-outline-light btn-sm">

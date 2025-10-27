@@ -1,14 +1,77 @@
-.prod-card{
-    background-color: #121213ff;
-    color: #ffffffff;
+/* ===== Solo Catálogo ===== */
+.catalogo-page { overflow-x: clip; }                /* elimina scrollbar horizontal del catálogo */
+
+.catalogo-row {
+  display: flex;                                    /* bootstrap ya lo hace; lo explicitamos */
+  flex-wrap: wrap !important;                       /* ***clave***: anula nowrap de Home/Style */
+  overflow-x: visible !important;
+  margin-left: 0; margin-right: 0;                  /* evita overflow por márgenes negativos */
 }
 
-.row {
-    --bs-gutter-x: 1.5rem;
+.catalogo-card-col { min-width: 260px; }            /* evita “columnas de 20px” */
+
+@media (min-width: 992px) {
+  .catalogo-card-col { flex: 0 0 25% !important; max-width: 25% !important; }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .catalogo-card-col { flex: 0 0 33.333% !important; max-width: 33.333% !important; }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .catalogo-card-col { flex: 0 0 50% !important; max-width: 50% !important; }
+}
+@media (max-width: 575.98px) {
+  .catalogo-card-col { flex: 0 0 100% !important; max-width: 100% !important; }
 }
 
-.card-prod {
-    max-width: 20rem;
-    max-height: 37rem;
-    background-color: #333;
+/* ===== Card ===== */
+.catalogo-card {
+  background: #121213;
+  color: #fff;
+  border-radius: 18px;
+  border: 1px solid rgba(79,209,255,.22);
+  box-shadow: 0 6px 26px rgba(0,0,0,.35);
+  overflow: hidden;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  width: auto;                                      /* por si alguien fijó un width estrecho */
 }
+
+/* Si algún CSS global puso vertical-rl, lo apagamos aquí */
+.catalogo-card * {
+  writing-mode: horizontal-tb !important;
+  text-orientation: mixed !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.catalogo-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(79,209,255,.35);
+  box-shadow: 0 10px 36px rgba(0,0,0,.5), 0 0 0 4px rgba(79,209,255,.18);
+}
+
+/* Imagen recortada bien */
+.catalogo-card .card-img-top {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  background: #0b0c0f;
+}
+
+/* Cuerpo */
+.catalogo-card .card-body { display: flex; flex-direction: column; gap: 8px; padding: 14px 16px 16px; }
+.catalogo-card .card-title { font-size: 1.05rem; font-weight: 600; line-height: 1.25; margin: 0 0 2px; }
+.catalogo-card .mb-1 strong { color: #cfefff; font-weight: 700; }
+.catalogo-card .text-muted { color: #a9b3c1 !important; font-size: .92rem; line-height: 1.35; margin-bottom: 6px; }
+
+/* Botón */
+.catalogo-card .cart-btn {
+  background: #000; color: #fff;
+  border: 1px solid rgba(127,136,125,.9);
+  border-radius: 12px; padding: 10px 12px; font-weight: 700;
+  transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease;
+}
+.catalogo-card .cart-btn:hover { transform: translateY(-1px); border-color: #4fd1ff; box-shadow: 0 0 0 4px rgba(79,209,255,.18); }
+
+

@@ -18,7 +18,7 @@
 
 /* Estilos para el carrusel */
 
-.carousel {
+.p-carousel {
   display: flex;
   width: 100%;
   max-width: 750px;
@@ -136,8 +136,8 @@
 
 /* Estilos para la sección de opiniones */
 
-.opinions {
-  margin-top: 10rem;
+.carousel slide opinions w-100-a {
+  margin-top: 6rem;
   display: flex;
   gap: 1rem;
   margin-left: 30rem;
@@ -154,16 +154,19 @@
   color: gray;
 }
 
-.opinions-carousel{
-  width: 600px;
-  height: 300px;
+.opinions .card {
+  margin: 0;
+  padding: 0;
+  max-width: 20rem;
+  max-height: 37rem;
+  background-color: #333;
 }
 
 .card {
   border-radius: 12px;
   box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
   transition: transform 0.2s ease;
-  width: 700px;
+  width: 10px;
   margin: 0 auto;
   padding: 0 15px;
 }

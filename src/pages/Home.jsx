@@ -14,7 +14,7 @@ export default function Home() {
         <div className="container-fluid py-4" id='home-container'>
             <div className="row">
                 <div className="col-lg-8 mb-3">
-                    <div id="gameCarousel" className="carousel slide mx-auto" data-bs-ride="carousel"
+                    <div id="gameCarousel" className="carousel slide mx-auto" data-bs-ride="p-carousel"
                         data-bs-interval="5000">
                         <div className="carousel-inner">
                             <div className="carousel-item active">
@@ -209,13 +209,13 @@ export default function Home() {
 
 
                 <div id="opinionsCarousel" className="carousel slide opinions w-100" data-bs-ride="carousel"
-                    data-bs-interval="3000">
+                    data-bs-interval="5000">
                     <h2 className="text-center mb-4" style={{ color: "#ffffffff" }}>Opiniones de Nuestros Gamers</h2>
                     <div className="carousel-inner">
 
                         <div className="carousel-item active">
                             <div className="d-flex justify-content-center">
-                                <div className="card" style={{ width: "22rem" }}>
+                                <div className="card" style={{ width: "10rem" }}>
                                     <img src="assets/img/Perfil1.jpg" className="card-img-top" alt="Usuario 1" />
                                     <div className="card-body">
                                         <p className="card-text">Excelente experiencia, el sitio es muy fácil de usar y

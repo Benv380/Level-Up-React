@@ -1,0 +1,14 @@
+.prod-card{
+    background-color: #121213ff;
+    color: #ffffffff;
+}
+
+.row {
+    --bs-gutter-x: 1.5rem;
+}
+
+.card-prod {
+    max-width: 20rem;
+    max-height: 37rem;
+    background-color: #333;
+}

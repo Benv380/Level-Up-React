@@ -1,5 +1,6 @@
 import productos from "../components/Catalogo";
 import { useCart } from "../components/context/CartContext";
+import "../css/Catalogo.css";
 
 
 
@@ -9,9 +10,9 @@ function Catalogo() {
   return (
     <div className="row">
       {productos.map((producto) => (
-        <div key={producto.id} className="col-12 col-sm-6 col-md-3 col-lg-3 mb-4">
+        <div key={producto.id} id="card-prod" className="col-12 col-sm-6 col-md-3 col-lg-3 mb-4">
           <div
-            className="card h-100 shadow" data-testid="producto"
+            className="card h-100 shadow" id="prod-card" data-testid="producto"
             style={{
               backgroundColor: "#121213ff",
               color: "#ffffffff",

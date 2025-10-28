@@ -37,7 +37,7 @@ export default function Nosotros() {
                 </div>
 
                 <div className="nosotros-imagen">
-                    <img src="assets/img/gamer_team.jpg" alt="Equipo Level-Up Gamer" />
+                    <img src="/assets/img/equipo-level-up.jpeg" alt="Equipo Level-Up Gamer" />
                 </div>
             </div>
         </section>

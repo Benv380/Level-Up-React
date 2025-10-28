@@ -1,5 +1,3 @@
-import catan from "../assets/img/Catan.jpeg";
-
 
 let products = [
   {

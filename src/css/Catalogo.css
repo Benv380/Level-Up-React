@@ -74,4 +74,15 @@
 }
 .catalogo-card .cart-btn:hover { transform: translateY(-1px); border-color: #4fd1ff; box-shadow: 0 0 0 4px rgba(79,209,255,.18); }
 
+.catalogo-titulo {
+  text-align: center;
+  font-size: 2.6rem;
+  color: #00bcd4; /* mantiene el azul característico */
+  font-weight: 700;
+  margin-bottom: 40px;
+}
 
+/* Títulos grises (nombre del producto) en blanco */
+.catalogo-card .card-title {
+  color: #ffffff !important;
+}

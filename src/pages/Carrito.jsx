@@ -1,53 +1,47 @@
 import React, { useEffect, useState } from "react";
-import '../css/Carrito.css';
+import "../css/Carrito.css";
 import { useAuth } from "../components/context/authContext";
-import { addToCart, getCartItems } from "../components/Utils";
 
 const Carrito = () => {
   const { user } = useAuth();
   const [email, setEmail] = useState(user?.email || "");
 
-  // Estado para los productos del carrito
+  // Estado para productos del carrito (desde localStorage) asegurando "cantidad"
   const [cartItems, setCartItems] = useState(() => {
     const items = JSON.parse(localStorage.getItem("cart")) || [];
-    // Asegurarse de que cada producto tenga cantidad
-    return items.map(item => ({ ...item, cantidad: item.cantidad || 1 }));
+    return items.map((item) => ({ ...item, cantidad: item.cantidad || 1 }));
   });
 
   useEffect(() => {
-    if (user && user.email) {
-      setEmail(user.email); // se inicializa al montar
-    }
+    if (user?.email) setEmail(user.email);
   }, [user]);
 
-  useEffect(() => {
-    if (user && user.email) {
-      setEmail(user.email);
-    }
-  }, [user]);
+  // Helpers
+  const clp = (n) => Number(n || 0).toLocaleString("es-CL");
 
-  // Funciones para manejar cantidad
-  function incrementarCantidad(id) {
-    const updatedCart = cartItems.map(item =>
-      item.id === id ? { ...item, cantidad: item.cantidad + 1 } : item
+  // Cantidad +/-
+  const incrementarCantidad = (id) => {
+    const updated = cartItems.map((it) =>
+      it.id === id ? { ...it, cantidad: it.cantidad + 1 } : it
     );
-    setCartItems(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
-  }
+    setCartItems(updated);
+    localStorage.setItem("cart", JSON.stringify(updated));
+  };
 
-  function disminuirCantidad(id) {
-    const updatedCart = cartItems.map(item =>
-      item.id === id && item.cantidad > 1 ? { ...item, cantidad: item.cantidad - 1 } : item
+  const disminuirCantidad = (id) => {
+    const updated = cartItems.map((it) =>
+      it.id === id && it.cantidad > 1 ? { ...it, cantidad: it.cantidad - 1 } : it
     );
-    setCartItems(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
-  }
+    setCartItems(updated);
+    localStorage.setItem("cart", JSON.stringify(updated));
+  };
 
   return (
     <section className="carrito">
       <h1 className="titulo">Tu Carrito</h1>
 
       <div className="carrito-container">
+        {/* FORMULARIO */}
         <form className="carrito-form">
           <div className="form-group">
             <label htmlFor="nombre">Nombre</label>
@@ -70,10 +64,10 @@ const Carrito = () => {
             />
           </div>
 
-          <div className="form-group" placeholder="SELECCIONE UNA OPCION">
-            <label htmlFor="region">Region de despacho</label>
-            <select id="region" name="region">
-              <option value="SELECCIONE UNA OPCION">SELECCIONE UNA OPCIÓN</option>
+          <div className="form-group">
+            <label htmlFor="region">Región de despacho</label>
+            <select id="region" name="region" defaultValue="SELECCIONE UNA OPCIÓN">
+              <option value="SELECCIONE UNA OPCIÓN">SELECCIONE UNA OPCIÓN</option>
               <option value="Arica y Parinacota">Arica y Parinacota</option>
               <option value="Tarapacá">Tarapacá</option>
               <option value="Antofagasta">Antofagasta</option>
@@ -93,44 +87,78 @@ const Carrito = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="direccion">Direccion de despacho</label>
-            <input type="text" id="direccion" name="direccion" placeholder="Ej: Av. Siempre Viva 742, Santiago" />
+            <label htmlFor="direccion">Dirección de despacho</label>
+            <input
+              type="text"
+              id="direccion"
+              name="direccion"
+              placeholder="Ej: Av. Siempre Viva 742, Santiago"
+            />
           </div>
 
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="fecha">Fecha de entrega</label>
-              <input type="date" id="fecha" name="fecha" />
-            </div>
+          <div className="form-group">
+            <label htmlFor="fecha">Fecha de entrega</label>
+            <input type="date" id="fecha" name="fecha" />
           </div>
         </form>
 
-        {/* Productos del carrito */}
+        {/* PRODUCTOS */}
         <div className="carrito-productos">
           {cartItems.length === 0 ? (
             <p>No hay productos en el carrito</p>
           ) : (
-            cartItems.map((producto) => (
-              <div key={producto.id} className="producto">
-                <h2>{producto.nombre}</h2>
-                <p>Precio: ${producto.precio}</p>
-
-                {/* Contador + / - */}
-                <div className="contador">
-                  <button type="button" onClick={() => disminuirCantidad(producto.id)}>-</button>
-                  <span>{producto.cantidad}</span>
-                  <button type="button" onClick={() => incrementarCantidad(producto.id)}>+</button>
-                </div>
-
-                <p>Subtotal: ${producto.precio * producto.cantidad}</p>
+            <>
+              <div className="items-head">
+                <span>Item</span>
+                <span>Precio</span>
+                <span>Cantidad</span>
+                <span className="align-right">Subtotal</span>
               </div>
-            ))
-          )}
 
-          <div className="total">
-            <p>Total</p>
-            <p>${cartItems.reduce((acc, producto) => acc + producto.precio * producto.cantidad, 0)}</p>
-          </div>
+              {cartItems.map((producto) => (
+                <div key={producto.id} className="item-row">
+                  <div className="item-info" title={producto.nombre}>
+                    {/* Imagen activa. Si algún producto no tiene imagen, cae en el onError */}
+                    <img
+                      src={producto.imagen}
+                      alt={producto.nombre}
+                      onError={(e) => {
+                        e.currentTarget.src =
+                          "https://via.placeholder.com/80x80?text=Sin+img";
+                      }}
+                    />
+                    <h3 className="item-title">{producto.nombre}</h3>
+                  </div>
+
+                  <div className="price">${clp(producto.precio)}</div>
+
+                  <div className="contador">
+                    <button type="button" onClick={() => disminuirCantidad(producto.id)} aria-label="Disminuir">
+                      −
+                    </button>
+                    <span>{producto.cantidad}</span>
+                    <button type="button" onClick={() => incrementarCantidad(producto.id)} aria-label="Aumentar">
+                      +
+                    </button>
+                  </div>
+
+                  <div className="subtotal align-right">
+                    ${clp(producto.precio * producto.cantidad)}
+                  </div>
+                </div>
+              ))}
+
+              <div className="total">
+                <p>Total</p>
+                <p>
+                  $
+                  {clp(
+                    cartItems.reduce((acc, p) => acc + p.precio * p.cantidad, 0)
+                  )}
+                </p>
+              </div>
+            </>
+          )}
 
           <button className="btn-pago">Pagar</button>
         </div>
@@ -139,6 +167,4 @@ const Carrito = () => {
   );
 };
 
-
 export default Carrito;
-

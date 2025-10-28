@@ -1,11 +1,24 @@
 import React, { useEffect, useState } from "react";
 import '../css/Carrito.css';
 import { useAuth } from "../components/context/authContext";
-import { addToCart,getCartItems } from "../components/Utils";
+import { addToCart, getCartItems } from "../components/Utils";
 
-const Carrito = () => {         //funcion para correo 
+const Carrito = () => {
   const { user } = useAuth();
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(user?.email || "");
+
+  // Estado para los productos del carrito
+  const [cartItems, setCartItems] = useState(() => {
+    const items = JSON.parse(localStorage.getItem("cart")) || [];
+    // Asegurarse de que cada producto tenga cantidad
+    return items.map(item => ({ ...item, cantidad: item.cantidad || 1 }));
+  });
+
+  useEffect(() => {
+    if (user && user.email) {
+      setEmail(user.email); // se inicializa al montar
+    }
+  }, [user]);
 
   useEffect(() => {
     if (user && user.email) {
@@ -13,12 +26,23 @@ const Carrito = () => {         //funcion para correo
     }
   }, [user]);
 
-  //funcion para productos del carrito
-
-  function getCartItems() {
-    return JSON.parse(localStorage.getItem("cart")) || [];
+  // Funciones para manejar cantidad
+  function incrementarCantidad(id) {
+    const updatedCart = cartItems.map(item =>
+      item.id === id ? { ...item, cantidad: item.cantidad + 1 } : item
+    );
+    setCartItems(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
   }
-    
+
+  function disminuirCantidad(id) {
+    const updatedCart = cartItems.map(item =>
+      item.id === id && item.cantidad > 1 ? { ...item, cantidad: item.cantidad - 1 } : item
+    );
+    setCartItems(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  }
+
   return (
     <section className="carrito">
       <h1 className="titulo">Tu Carrito</h1>
@@ -36,34 +60,40 @@ const Carrito = () => {         //funcion para correo
           </div>
 
           <div className="form-group">
-            <label htmlFor="email"></label>
-            <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} disabled={!user} />
+            <label htmlFor="email">Correo electrónico</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="ejemplo@gmail.cl"
+            />
           </div>
 
-          <div className="form-group">
+          <div className="form-group" placeholder="SELECCIONE UNA OPCION">
             <label htmlFor="region">Region de despacho</label>
             <select id="region" name="region">
-            <option value="SELECCIONE UNA OPCION"></option>
-            <option value="Arica y Parinacota">Arica y Parinacota</option>
-            <option value="Tarapacá">Tarapacá</option>
-            <option value="Antofagasta">Antofagasta</option>
-            <option value="Atacama">Atacama</option>
-            <option value="Coquimbo">Coquimbo</option>
-            <option value="Valparaíso">Valparaíso</option>
-            <option value="Metropolitana">Metropolitana</option>
-            <option value="O'Higgins">O'Higgins</option>
-            <option value="Maule">Maule</option>
-            <option value="Biobío">Biobío</option>
-            <option value="Araucanía">Araucanía</option>
-            <option value="Los Ríos">Los Ríos</option>
-            <option value="Los Lagos">Los Lagos</option>
-            <option value="Aysén">Aysén</option>
-            <option value="Magallanes">Magallanes</option>
+              <option value="SELECCIONE UNA OPCION">SELECCIONE UNA OPCIÓN</option>
+              <option value="Arica y Parinacota">Arica y Parinacota</option>
+              <option value="Tarapacá">Tarapacá</option>
+              <option value="Antofagasta">Antofagasta</option>
+              <option value="Atacama">Atacama</option>
+              <option value="Coquimbo">Coquimbo</option>
+              <option value="Valparaíso">Valparaíso</option>
+              <option value="Metropolitana">Metropolitana</option>
+              <option value="O'Higgins">O'Higgins</option>
+              <option value="Maule">Maule</option>
+              <option value="Biobío">Biobío</option>
+              <option value="Araucanía">Araucanía</option>
+              <option value="Los Ríos">Los Ríos</option>
+              <option value="Los Lagos">Los Lagos</option>
+              <option value="Aysén">Aysén</option>
+              <option value="Magallanes">Magallanes</option>
             </select>
           </div>
 
           <div className="form-group">
-            <label htmlFor="direccion">direccion de despacho</label>
+            <label htmlFor="direccion">Direccion de despacho</label>
             <input type="text" id="direccion" name="direccion" placeholder="Ej: Av. Siempre Viva 742, Santiago" />
           </div>
 
@@ -77,28 +107,38 @@ const Carrito = () => {         //funcion para correo
 
         {/* Productos del carrito */}
         <div className="carrito-productos">
-            {getCartItems().length === 0 ? (
-              <p>No hay productos en el carrito</p>
-            ) : (
-              getCartItems().map((producto) => (
-                <div key={producto.id} className="producto">
-                  <h2>{producto.nombre}</h2>
-                  <p>Precio: ${producto.precio}</p>
+          {cartItems.length === 0 ? (
+            <p>No hay productos en el carrito</p>
+          ) : (
+            cartItems.map((producto) => (
+              <div key={producto.id} className="producto">
+                <h2>{producto.nombre}</h2>
+                <p>Precio: ${producto.precio}</p>
+
+                {/* Contador + / - */}
+                <div className="contador">
+                  <button type="button" onClick={() => disminuirCantidad(producto.id)}>-</button>
+                  <span>{producto.cantidad}</span>
+                  <button type="button" onClick={() => incrementarCantidad(producto.id)}>+</button>
                 </div>
-              ))
-            )}
+
+                <p>Subtotal: ${producto.precio * producto.cantidad}</p>
+              </div>
+            ))
+          )}
 
           <div className="total">
             <p>Total</p>
-            <p>${getCartItems().reduce((acc, producto) => acc + producto.precio, 0)}</p>
+            <p>${cartItems.reduce((acc, producto) => acc + producto.precio * producto.cantidad, 0)}</p>
           </div>
 
-          <button className="btn-pago">Payment</button>
+          <button className="btn-pago">Pagar</button>
         </div>
       </div>
     </section>
   );
 };
+
 
 export default Carrito;
 

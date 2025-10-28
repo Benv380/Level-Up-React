@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, MemoryRouter } from "@testing-library/react";
 import { CartProvider } from "../components/context/CartContext";
 import Catalogo from "./Catalogo";
 
@@ -16,7 +16,6 @@ describe("Catalogo (Card)", () => {
   });
 });
 
-
 describe("Busca un producto específico por su título", () => {
   it("debe renderizar el producto correcto", () => {
     render(
@@ -28,4 +27,19 @@ describe("Busca un producto específico por su título", () => {
       .toBeInTheDocument(); //Verifica que el elemento (nombre buscado) existe en el DOM renderizado.
   });
 });
+
+describe("Busca un producto específico por su título", () => {
+  it("debe renderizar el producto correcto", () => {
+    render(
+      <CartProvider>
+        <Catalogo />
+      </CartProvider>
+    );
+    expect(screen.getByRole("heading", { name: "Carcassonne", level: 4 })) // Busca un texto exacto en el contenido
+      .toBeInTheDocument(); //Verifica que el elemento (nombre buscado) existe en el DOM renderizado.
+  });
+});
+
+
+
 

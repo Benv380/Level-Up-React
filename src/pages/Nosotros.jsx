@@ -15,7 +15,7 @@ export default function Nosotros() {
                         una ubicación física, realizamos despachos a todo el país.
                     </p>
 
-                    <div className="mision-vision">
+                    <div className="mision-vision" data-testid="mision-card">
                         <div className="card">
                             <h2>Misión</h2>
                             <p>
@@ -25,7 +25,7 @@ export default function Nosotros() {
                             </p>
                         </div>
 
-                        <div className="card">
+                        <div className="card" data-testid="mision-card">
                             <h2>Visión</h2>
                             <p>
                                 Ser la tienda online líder en productos para gamers en Chile, reconocida por su innovación,

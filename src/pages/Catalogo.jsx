@@ -19,10 +19,18 @@ function Catalogo() {
                   <h4 className="card-title">{p.nombre}</h4>
                   <p className="mb-1"><strong>{p.categoria}</strong></p>
                   <p className="text-muted medium">{p.descripcion}</p>
-                  <button type="button" className="cart-btn btn btn-outline-dark mt-auto fw-bold" id="add-to-cart-btn"
-                          onClick={() => addToCart(p)}>
+                  <button
+                    type="button"
+                    className="cart-btn btn btn-outline-dark mt-auto fw-bold"
+                    id="add-to-cart-btn"
+                    onClick={() => {
+                      alert("Producto agregado al carro");
+                      addToCart(p);
+                    }}
+                  >
                     Agregar al carro
                   </button>
+
                 </div>
               </div>
             </div>

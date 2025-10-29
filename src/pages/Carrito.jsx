@@ -36,6 +36,12 @@ const Carrito = () => {
     localStorage.setItem("cart", JSON.stringify(updated));
   };
 
+  const vaciarCarrito = (id) => {
+    const nuevosItems = cartItems.filter(item => item.id !== id);
+    setCartItems(nuevosItems);
+    localStorage.setItem("cart", JSON.stringify(nuevosItems));
+  };
+
   return (
     <section className="carrito">
       <h1 className="titulo">Tu Carrito</h1>
@@ -133,6 +139,8 @@ const Carrito = () => {
                   <div className="price">${clp(producto.precio)}</div>
 
                   <div className="contador">
+                    <button type="button" onClick={() => vaciarCarrito(producto.id)} aria-level="Vaciar"><input src="assets/img/trash.png" type="button" height="25" width="25"/></button>
+
                     <button type="button" onClick={() => disminuirCantidad(producto.id)} aria-label="Disminuir">
                       −
                     </button>

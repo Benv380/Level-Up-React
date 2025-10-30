@@ -21,9 +21,11 @@ export default function Login() {
       setError("Usuario o contraseña incorrecta");
     }
   };
-
+  
   return (
+    
     <div>
+      <h1 className="titulo-login">Inicio de Sesión</h1>
       <Helmet>
         <title>Iniciar Sesión | Level Up</title>
       </Helmet>

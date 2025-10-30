@@ -5,8 +5,6 @@ import { useAuth } from "../components/context/authContext";
 const Carrito = () => {
   const { user } = useAuth();
   const [email, setEmail] = useState(user?.email || "");
-
-  // Estado para productos del carrito (desde localStorage) asegurando "cantidad"
   const [cartItems, setCartItems] = useState(() => {
     const items = JSON.parse(localStorage.getItem("cart")) || [];
     return items.map((item) => ({ ...item, cantidad: item.cantidad || 1 }));
@@ -16,10 +14,8 @@ const Carrito = () => {
     if (user?.email) setEmail(user.email);
   }, [user]);
 
-  // Helpers
   const clp = (n) => Number(n || 0).toLocaleString("es-CL");
 
-  // Cantidad +/-
   const incrementarCantidad = (id) => {
     const updated = cartItems.map((it) =>
       it.id === id ? { ...it, cantidad: it.cantidad + 1 } : it
@@ -124,7 +120,6 @@ const Carrito = () => {
               {cartItems.map((producto) => (
                 <div key={producto.id} className="item-row">
                   <div className="item-info" title={producto.nombre}>
-                    {/* Imagen activa. Si algún producto no tiene imagen, cae en el onError */}
                     <img
                       src={producto.imagen}
                       alt={producto.nombre}

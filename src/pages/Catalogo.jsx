@@ -1,4 +1,4 @@
-// pages/Catalogo.jsx
+
 import productos from "../components/Catalogo";
 import { useCart } from "../components/context/CartContext";
 import "../css/Catalogo.css";

@@ -1,5 +1,4 @@
 import '../css/Home.css';
-import { Scripts } from 'react-router-dom';
 import { useEffect } from "react";
 import { SideBar, addToCart } from '../components/Utils';
 
@@ -39,7 +38,7 @@ export default function Home() {
                             <div className="carousel-item">
                                 <img src="assets/img/Playstation5.jpeg" className="d-block w-100" alt="Playstation5" />
                                 <div className="carousel-caption">
-                                    <h2 className="fw-bold">Ps5</h2>
+                                    <h2 className="fw-bold">Playstation 5</h2>
                                     <a href="/catalogo" className="btn btn-light me-2">Más información</a>
                                     <a href="/catalogo" className="btn btn-outline-light">+ Agregar al carro</a>
                                 </div>
@@ -66,7 +65,7 @@ export default function Home() {
 
                     </div>
                 </div>
-
+                
                 <div className="col-lg-3" id="sidebar">
 
                     <div className="d-flex flex-column gap-3">
@@ -82,10 +81,6 @@ export default function Home() {
                             <img src="assets/img/Playstation5.jpeg" alt="Playstation 5" />
                             <span className="ms-3">Ps5</span>
                         </div>
-                        <div className="sidebar-game" data-bs-target="#gameCarousel" data-bs-slide-to="3">
-                            <img src="assets/img/Carcasonne.jpeg" alt="Carcassonne" />
-                            <span className="ms-3">Carcassonne</span>
-                        </div>
                         <div className="sidebar-game" data-bs-target="#gameCarousel" data-bs-slide-to="4">
                             <img src="assets/img/Mouse gamer.jpeg" alt="Mouse Gamer" />
                             <span className="ms-3">Mouse</span>
@@ -94,12 +89,10 @@ export default function Home() {
                 </div>
 
             </div>
-
+            <div className="skin-catalogo"></div>
             <div className="news">
-                <h2 className="w-100 text-center mb-4" style={{ color: "#ffffffff" }}>Descubre lo nuevo</h2>
-
-                {/* Noticia 1 */}
-                <div className="card" style={{ width: "18rem" }}>
+                <h2 className="w-100 text-center mb-4">Novedades Level-Up</h2>
+                <div className="card">
                     <img src="assets/img/2 años LevelUp.png" className="card-img-top" alt="Noticia gamer 1" />
                     <div className="card-body">
                         <h5 className="card-title">La revolución gamer en Chile</h5>
@@ -109,8 +102,7 @@ export default function Home() {
                     </div>
                 </div>
 
-                {/* Noticia 2 */}
-                <div className="card" style={{ width: "18rem" }}>
+                <div className="card">
                     <img src="assets/img/Canjea puntos.png" className="card-img-top" alt="Noticia gamer 2" />
                     <div className="card-body">
                         <h5 className="card-title">Gamificación y recompensas únicas</h5>
@@ -120,8 +112,7 @@ export default function Home() {
                     </div>
                 </div>
 
-                {/* Noticia 3 */}
-                <div className="card" style={{ width: "18rem" }}>
+                <div className="card">
                     <img src="assets/img/Guias.png" className="card-img-top" alt="Noticia gamer 3" />
                     <div className="card-body">
                         <h5 className="card-title">Comunidad gamer en expansión</h5>
@@ -132,7 +123,7 @@ export default function Home() {
                 </div>
 
                 {/* Noticia 4 */}
-                <div className="card" style={{ width: "18rem" }}>
+                <div className="card">
                     <img src="assets/img/Catalogo.png" className="card-img-top" alt="Noticia gamer 4" />
                     <div className="card-body">
                         <h5 className="card-title">Tecnología y estilo para jugar mejor</h5>
@@ -145,11 +136,10 @@ export default function Home() {
 
             <div className="events">
                 <div className="events">
-                    <h2 className="w-100 text-center mb-4" style={{ color: "#ffffffff" }}>Eventos Destacados</h2>
+                    <h2 className="w-100 text-center mb-4">Eventos Destacados</h2>
 
-                    {/* Tarjetas de eventos */}
                     <div style={{ display: "flex", gap: "20px", flexWrap: "wrap", justifyContent: "center" }}>
-                        <div className="card" style={{ width: "18rem" }}>
+                        <div className="card">
                             <img src="assets/img/Evento1.png" className="card-img-top" alt="Evento 1" />
                             <div className="card-body">
                                 <h5 className="card-title">Gaming Fest Santiago</h5>
@@ -158,7 +148,7 @@ export default function Home() {
                             </div>
                         </div>
 
-                        <div className="card" style={{ width: "18rem" }}>
+                        <div className="card">
                             <img src="assets/img/Evento2.png" className="card-img-top" alt="Evento 2" />
                             <div className="card-body">
                                 <h5 className="card-title">Expo Gamer Valparaíso</h5>
@@ -167,7 +157,7 @@ export default function Home() {
                             </div>
                         </div>
 
-                        <div className="card" style={{ width: "18rem" }}>
+                        <div className="card">
                             <img src="assets/img/Evento3.png" className="card-img-top" alt="Evento 3" />
                             <div className="card-body">
                                 <h5 className="card-title">Concepción Gaming Week</h5>
@@ -178,44 +168,36 @@ export default function Home() {
                     </div>
                 </div>
 
-                {/* Mapa con ubicaciones */}
                 <div className="maps">
-                    <h2 className="w-100 text-center mb-4" style={{ color: "#ffffffff" }}>Mapa de ubicaciones</h2>
-
-                    {/* Movistar Arena, Santiago */}
+                    <h2 className="w-100 text-center mb-4">Mapa de ubicaciones</h2>
                     <div className="mapa-evento">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3328.708662619468!2d-70.66382368479979!3d-33.462572580782105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c51b935c0c23%3A0xfe177137c9c9c6c8!2sMovistar%20Arena!5e0!3m2!1ses!2scl!4v1694155378000!5m2!1ses!2scl"
                             allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade">
                         </iframe>
                     </div>
-
-                    {/* Mallplaza Trébol, Concepción */}
                     <div className="mapa-evento">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3328.708662619468!2d-73.0690384!3d-36.7918699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9669b5745f460495%3A0x1bf5dd96a8168e34!2sMallplaza%20Tr%C3%A9bol!5e0!3m2!1ses!2scl!4v1694155378000!5m2!1ses!2scl"
                             allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade">
                         </iframe>
                     </div>
-
                     <div className="mapa-evento">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3328.708662619468!2d-71.627491!3d-33.046250!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c51b935c0c23%3A0xfe177137c9c9c6c8!2sParque%20Cultural%20de%20Valpara%C3%ADso!5e0!3m2!1ses!2scl!4v1694155378000!5m2!1ses!2scl"
                             allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade">
                         </iframe>
                     </div>
-
                 </div>
-
 
                 <div id="opinionsCarousel" className="carousel slide opinions w-100" data-bs-ride="carousel"
                     data-bs-interval="5000">
-                    <h2 className="text-center mb-4" style={{ color: "#ffffffff" }}>Opiniones de Nuestros Gamers</h2>
+                    <h2 className="text-center mb-4">Opiniones de Nuestros Gamers</h2>
                     <div className="carousel-inner">
 
                         <div className="carousel-item active">
                             <div className="d-flex justify-content-center">
-                                <div className="card" style={{ width: "10rem" }}>
+                                <div className="card">
                                     <img src="assets/img/Perfil1.jpg" className="card-img-top" alt="Usuario 1" />
                                     <div className="card-body">
                                         <p className="card-text">Excelente experiencia, el sitio es muy fácil de usar y
@@ -229,7 +211,7 @@ export default function Home() {
 
                         <div className="carousel-item">
                             <div className="d-flex justify-content-center">
-                                <div className="card" style={{ width: "22rem" }}>
+                                <div className="card">
                                     <img src="assets/img/Perfil2.jpg" className="card-img-top" alt="Usuario 2" />
                                     <div className="card-body">
                                         <p className="card-text">La variedad de productos es impresionante, desde los
@@ -242,7 +224,7 @@ export default function Home() {
 
                         <div className="carousel-item">
                             <div className="d-flex justify-content-center">
-                                <div className="card" style={{ width: "22rem" }}>
+                                <div className="card">
                                     <img src="assets/img/Perfil3.jpg" className="card-img-top" alt="Usuario 3" />
                                     <div className="card-body">
                                         <p className="card-text">Muy satisfecho con el servicio técnico. Rápido,
@@ -268,7 +250,7 @@ export default function Home() {
 
                 </div>
             </div>
-
+            <div className="home-card"></div>
         </div>
     );
 }

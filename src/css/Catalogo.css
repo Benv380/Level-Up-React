@@ -1,15 +1,13 @@
-/* ===== Solo Catálogo ===== */
-.catalogo-page { overflow-x: clip; }                /* elimina scrollbar horizontal del catálogo */
 
+.catalogo-page { overflow-x: clip; }               
 .catalogo-row {
-  display: flex;                                    /* bootstrap ya lo hace; lo explicitamos */
-  flex-wrap: wrap !important;                       /* ***clave***: anula nowrap de Home/Style */
+  display: flex;                                    
+  flex-wrap: wrap !important;                      
   overflow-x: visible !important;
-  margin-left: 0; margin-right: 0;                  /* evita overflow por márgenes negativos */
+  margin-left: 0; margin-right: 0;                  
 }
 
-.catalogo-card-col { min-width: 260px; }            /* evita “columnas de 20px” */
-
+.catalogo-card-col { min-width: 260px; }           
 @media (min-width: 992px) {
   .catalogo-card-col { flex: 0 0 25% !important; max-width: 25% !important; }
 }
@@ -23,7 +21,6 @@
   .catalogo-card-col { flex: 0 0 100% !important; max-width: 100% !important; }
 }
 
-/* ===== Card ===== */
 .catalogo-card {
   background: #121213;
   color: #fff;
@@ -32,10 +29,9 @@
   box-shadow: 0 6px 26px rgba(0,0,0,.35);
   overflow: hidden;
   transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-  width: auto;                                      /* por si alguien fijó un width estrecho */
+  width: auto;                                     
 }
 
-/* Si algún CSS global puso vertical-rl, lo apagamos aquí */
 .catalogo-card * {
   writing-mode: horizontal-tb !important;
   text-orientation: mixed !important;
@@ -50,7 +46,6 @@
   box-shadow: 0 10px 36px rgba(0,0,0,.5), 0 0 0 4px rgba(79,209,255,.18);
 }
 
-/* Imagen recortada bien */
 .catalogo-card .card-img-top {
   height: 200px;
   width: 100%;
@@ -59,13 +54,12 @@
   background: #0b0c0f;
 }
 
-/* Cuerpo */
 .catalogo-card .card-body { display: flex; flex-direction: column; gap: 8px; padding: 14px 16px 16px; }
 .catalogo-card .card-title { font-size: 1.05rem; font-weight: 600; line-height: 1.25; margin: 0 0 2px; }
 .catalogo-card .mb-1 strong { color: #cfefff; font-weight: 700; }
 .catalogo-card .text-muted { color: #a9b3c1 !important; font-size: .92rem; line-height: 1.35; margin-bottom: 6px; }
 
-/* Botón */
+
 .catalogo-card .cart-btn {
   background: #000; color: #fff;
   border: 1px solid rgba(127,136,125,.9);
@@ -77,12 +71,11 @@
 .catalogo-titulo {
   text-align: center;
   font-size: 2.6rem;
-  color: #00bcd4; /* mantiene el azul característico */
+  color: #00bcd4; 
   font-weight: 700;
   margin-bottom: 40px;
 }
 
-/* Títulos grises (nombre del producto) en blanco */
 .catalogo-card .card-title {
   color: #ffffff !important;
 }

@@ -1,18 +1,13 @@
-/* ===== CARRITO: LAYOUT GENERAL (Grid 2 columnas) ===== */
 section.carrito .carrito-container{
-  /* ancho total “usable” y centrado */
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 16px;
-
-  /* grid 2 columnas: izquierda (form) / derecha (productos) */
   display: grid;
-  grid-template-columns: minmax(320px, 420px) minmax(520px, 1fr); /* ← derecha más ancha */
+  grid-template-columns: minmax(320px, 420px) minmax(520px, 1fr); 
   gap: 32px;
   align-items: start;
 }
 
-/* Cards con look consistente */
 section.carrito .carrito-form,
 section.carrito .carrito-productos{
   background: #121213;
@@ -22,13 +17,10 @@ section.carrito .carrito-productos{
   padding: 24px 26px;
 }
 
-/* NUNCA limites la card derecha con max-width: la dejamos crecer */
 section.carrito .carrito-form{
-  /* si quieres, puedes fijar un máximo cómodo a la izquierda */
   max-width: 520px;
 }
 section.carrito .carrito-productos{
-  /* sin max-width; que ocupe todo el espacio de su columna */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -36,7 +28,6 @@ section.carrito .carrito-productos{
   box-sizing: border-box;
 }
 
-/* Título centrado dentro del mismo ancho del grid */
 section.carrito .titulo{
   width: 100%;
   max-width: 1280px;
@@ -44,10 +35,9 @@ section.carrito .titulo{
   text-align: center;
 }
 
-/* ===== Grids internos (encabezado y filas de items) ===== */
 section.carrito .items-head{
   display: grid;
-  grid-template-columns: minmax(280px, 1.6fr) 110px 130px 120px; /* nombre | precio | cant | subtotal */
+  grid-template-columns: minmax(280px, 1.6fr) 110px 130px 120px; 
   gap: 12px;
   padding: 6px 0 12px;
   color: #a9b3c1;
@@ -67,12 +57,11 @@ section.carrito .item-row:last-of-type{
   border-bottom: 1px solid rgba(255,255,255,.14);
 }
 
-/* Columna “Item” con imagen + nombre */
 section.carrito .item-info{
   display: flex;
   align-items: center;
   gap: 10px;
-  min-width: 0; /* imprescindible para que el texto pueda elipsarse/clamp */
+  min-width: 0; 
 }
 section.carrito .item-info img{
   width: 40px; height: 40px; flex: 0 0 40px;
@@ -86,10 +75,8 @@ section.carrito .item-title{
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2; /* 2 líneas visibles */
 }
 
-/* Tipografías/colores uniformes en columnas numéricas */
 section.carrito .price,
 section.carrito .subtotal,
 section.carrito .contador span{
@@ -98,7 +85,6 @@ section.carrito .contador span{
 }
 section.carrito .subtotal{ text-align: right; }
 
-/* Contador +/- */
 section.carrito .contador{
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   background: #1a1c22; border: 1px solid rgba(79,209,255,.25);
@@ -115,7 +101,6 @@ section.carrito .contador button:hover{
   box-shadow: 0 0 0 4px rgba(79,209,255,.18);
 }
 
-/* TOTAL: blanco sí o sí y en una sola línea con separación */
 section.carrito .total{
   margin-top: 16px;
   padding-top: 14px;
@@ -126,11 +111,10 @@ section.carrito .total{
   gap: 12px;
   font-weight: 700;
   font-size: 1.06rem;
-  color: #ffffff; /* texto blanco */
+  color: #ffffff;
 }
-section.carrito .total *{ color: #ffffff; } /* por si hay estilos heredados */
+section.carrito .total *{ color: #ffffff; } 
 
-/* Botón pagar */
 section.carrito .btn-pago{
   margin-top: 16px;
   width: 100%;
@@ -151,17 +135,15 @@ section.carrito .btn-pago:hover{
   box-shadow: 0 0 8px rgba(79, 209, 255, 0.25);
 }
 
-/* Hover: un poco más de aire a la 1ª columna en desktop (opcional) */
 @media (min-width: 992px){
   section.carrito .item-row:hover{
     grid-template-columns: minmax(320px, 1.8fr) 110px 130px 120px;
   }
 }
 
-/* ===== Responsive ===== */
 @media (max-width: 920px){
   section.carrito .carrito-container{
-    grid-template-columns: 1fr; /* apila las cards */
+    grid-template-columns: 1fr; 
   }
   section.carrito .carrito-form{ max-width: none; }
 }
@@ -169,40 +151,34 @@ section.carrito .btn-pago:hover{
 @media (max-width: 560px){
   section.carrito .items-head,
   section.carrito .item-row{
-    grid-template-columns: 1fr 90px; /* Item | Subtotal */
+    grid-template-columns: 1fr 90px; 
     row-gap: 8px;
   }
-  section.carrito .price{ display: none; } /* ocultar precio unitario en móvil */
+  section.carrito .price{ display: none; } 
   section.carrito .contador{ justify-self: end; }
   section.carrito .subtotal{ grid-column: 2; }
 }
 
-/* 1) Más aire antes del footer */
+
 section.carrito{
-  /* usa el que prefieras; con padding no empujas al footer fijo */
-  padding-bottom: 64px;  /* ↑ separa el contenido del footer */
-  /* o bien: margin-bottom: 64px; */
+  padding-bottom: 64px;  
 }
 
-/* 2) Botón “Pagar” más angosto */
-section.carrito .carrito-productos .btn-pago{
-  /* ancho contenido, centrado */
+
+section.carrito .carrito-productos .btn-pago{ 
   width: clamp(240px, 60%, 420px);
-  margin: 16px auto 0;   /* centra horizontalmente */
+  margin: 16px auto 0;   
   display: block;
 }
 
-/* 3) Alinear encabezados (Item / Precio / Cantidad / Subtotal)
-      con las columnas de sus filas */
-section.carrito .items-head{
-  /* ya compartes la misma grilla que las filas; ajustamos alineaciones */
-}
 section.carrito .items-head > *:nth-child(2){ text-align: right; }  /* Precio */
 section.carrito .items-head > *:nth-child(3){ text-align: center; } /* Cantidad */
 section.carrito .items-head > *:nth-child(4){ text-align: right; }  /* Subtotal */
 
-/* Alineaciones por columna en las filas */
 section.carrito .item-row > *:nth-child(2){ text-align: right; }  /* Precio */
 section.carrito .item-row > *:nth-child(3){ text-align: center; } /* Cantidad */
-/* Subtotal ya alineado a la derecha arriba */      
+    
 
+.carrito-productos p {
+  color: #ffffff !important;
+}

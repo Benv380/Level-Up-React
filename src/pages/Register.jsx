@@ -42,6 +42,7 @@ export default function Register() {
 
   return (
     <div>
+      <h1 className="titulo-registro">Registro de Usuario</h1>
       <div className="auth-header">
         <h1 className="auth-title">Crear Cuenta</h1>
         <p className="auth-subtitle">Únete a la comunidad Level-Up Gamer</p>

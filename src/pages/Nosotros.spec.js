@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, MemoryRouter } from "@testing-library/react";
+import { render, screen} from "@testing-library/react";
 import { CartProvider } from "../components/context/CartContext";
 import Nosotros from "./Nosotros";
 

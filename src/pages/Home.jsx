@@ -1,6 +1,6 @@
 import '../css/Home.css';
 import { useEffect } from "react";
-import { SideBar, addToCart } from '../components/Utils';
+import { SideBar } from '../components/Utils';
 
 
 export default function Home() {
@@ -13,7 +13,7 @@ export default function Home() {
         <div className="container-fluid py-4" id='home-container'>
             <div className="row">
                 <div className="col-lg-8 mb-3">
-                    <div id="gameCarousel" className="carousel slide mx-auto" data-bs-ride="p-carousel"
+                    <div id="gameCarousel" className="carousel slide mx-auto" data-bs-ride="carousel"
                         data-bs-interval="5000">
                         <div className="carousel-inner">
                             <div className="carousel-item active">
@@ -81,7 +81,7 @@ export default function Home() {
                             <img src="assets/img/Playstation5.jpeg" alt="Playstation 5" />
                             <span className="ms-3">Ps5</span>
                         </div>
-                        <div className="sidebar-game" data-bs-target="#gameCarousel" data-bs-slide-to="4">
+                        <div className="sidebar-game" data-bs-target="#gameCarousel" data-bs-slide-to="3">
                             <img src="assets/img/Mouse gamer.jpeg" alt="Mouse Gamer" />
                             <span className="ms-3">Mouse</span>
                         </div>

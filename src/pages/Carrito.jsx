@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../css/Carrito.css";
 import { useAuth } from "../components/context/authContext";
+import trash from "../assets/img/image.png";
 
 const Carrito = () => {
   const { user } = useAuth();
@@ -134,7 +135,9 @@ const Carrito = () => {
                   <div className="price">${clp(producto.precio)}</div>
 
                   <div className="contador">
-                    <button type="button" onClick={() => vaciarCarrito(producto.id)} aria-level="Vaciar"><input src="assets/img/trash.png" type="button" height="25" width="25"/></button>
+                    <button type="button" onClick={() => vaciarCarrito(producto.id)} aria-label="Vaciar">
+                      <img src={trash} alt="Vaciar" height="25" width="25" />
+                    </button>
 
                     <button type="button" onClick={() => disminuirCantidad(producto.id)} aria-label="Disminuir">
                       −

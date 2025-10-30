@@ -10,6 +10,3 @@ beforeAll(() => {
 afterEach(() => {
   cleanup();
 });
-
-// (Opcional) Si tus componentes usan fetch:
-// import 'whatwg-fetch';

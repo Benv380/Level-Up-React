@@ -3,9 +3,9 @@ import { render, screen } from '@testing-library/react';
 import Home from './Home';
 
 describe('Elementos del Home', () => {
-  it('Busca titulo de "Descubre lo nuevo"', async () => {
+  it('Busca titulo de "Novedades Level-Up"', async () => {
     render(<Home />);
-    const titulo = await screen.findByText(/Descubre lo nuevo/i);
+    const titulo = await screen.findByText(/Novedades Level-Up/i);
     expect(titulo).toBeInTheDocument();
   }); 
 });

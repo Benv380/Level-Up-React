@@ -25,5 +25,5 @@ export default function SideBar() {
 
 export { SideBar };
 
-//Funcion para agregar productos al carrito en memoria cache (localStorage)
+
 

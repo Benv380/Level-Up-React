@@ -33,7 +33,7 @@ module.exports = function (config) {
           // CSS
           {
             test: /\.css$/i,
-            use: ['style-loader', 'css-loader'] // 👈 Agregado
+            use: ['style-loader', 'css-loader']
           },
           // Imágenes
           {
@@ -45,8 +45,8 @@ module.exports = function (config) {
       resolve: {
         extensions: ['.js', '.jsx'],
         alias: {
-          fireapp: path.resolve(__dirname, 'src/firebase.js'), // Ajusta según tu ruta
-          fireauth: path.resolve(__dirname, 'src/components/firebaseUtils.js') // Ajusta según tu ruta
+          fireapp: path.resolve(__dirname, 'src/firebase.js'),
+          fireauth: path.resolve(__dirname, 'src/components/firebaseUtils.js') 
         }
       }
     },

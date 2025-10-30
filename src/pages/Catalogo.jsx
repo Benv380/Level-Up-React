@@ -24,7 +24,6 @@ function Catalogo() {
                     className="cart-btn btn btn-outline-dark mt-auto fw-bold"
                     id="add-to-cart-btn"
                     onClick={() => {
-                      alert("Producto agregado al carro");
                       addToCart(p);
                     }}
                   >

@@ -14,7 +14,7 @@ import { AuthProvider } from './components/context/authContext';
 import { CartProvider } from './components/context/CartContext';
 
 function App() {
-  return (
+  return ( 
     <AuthProvider>
       <CartProvider>
         <Header />

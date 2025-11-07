@@ -1,10 +1,40 @@
-
-import productos from "../components/Catalogo";
+import { useEffect, useState } from "react";
 import { useCart } from "../components/context/CartContext";
 import "../css/Catalogo.css";
 
 function Catalogo() {
   const { addToCart } = useCart();
+  const [productos, setProductos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    // Llamada al microservicio Spring Boot
+    fetch("http://localhost:8080/catalogo")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Error al obtener los productos");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setProductos(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error al cargar productos:", error);
+        setError(error.message);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return <p className="text-center mt-5">Cargando productos...</p>;
+  }
+
+  if (error) {
+    return <p className="text-center text-danger mt-5">Error: {error}</p>;
+  }
 
   return (
     <section className="catalogo-page">
@@ -14,7 +44,12 @@ function Catalogo() {
           {productos.map((p) => (
             <div key={p.id} className="catalogo-card-col col-12 col-sm-6 col-md-3 col-lg-3">
               <div className="card h-100 shadow catalogo-card" data-testid="producto">
-                <img src={p.imagen} className="card-img-top rounded-top" alt={p.nombre} loading="lazy" />
+                <img
+                  src={p.imagen}
+                  className="card-img-top rounded-top"
+                  alt={p.nombre}
+                  loading="lazy"
+                />
                 <div className="card-body d-flex flex-column">
                   <h4 className="card-title">{p.nombre}</h4>
                   <p className="mb-1"><strong>{p.categoria}</strong></p>
@@ -23,13 +58,10 @@ function Catalogo() {
                     type="button"
                     className="cart-btn btn btn-outline-dark mt-auto fw-bold"
                     id="add-to-cart-btn"
-                    onClick={() => {
-                      addToCart(p);
-                    }}
+                    onClick={() => addToCart(p)}
                   >
                     Agregar al carro
                   </button>
-
                 </div>
               </div>
             </div>
@@ -39,4 +71,5 @@ function Catalogo() {
     </section>
   );
 }
+
 export default Catalogo;

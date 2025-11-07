@@ -10,6 +10,16 @@
             "name": "Launch Chrome against localhost",
             "url": "http://localhost:8080",
             "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-LevelUpApplication<Level-Up>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "cl.duoc.level_up.LevelUpApplication",
+            "projectName": "Level-Up",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }

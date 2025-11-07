@@ -1,4 +1,4 @@
-package cl.duoc.Level_Up;
+package cl.duoc.level_up;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

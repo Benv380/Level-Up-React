@@ -1,5 +1,6 @@
 package cl.duoc.level_up.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -21,6 +22,7 @@ public class Venta {
     @Id
     private Long id_venta;
 
+    @Column(nullable = false)
     private String fecha_venta;
 
 

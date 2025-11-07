@@ -1,9 +1,12 @@
 package cl.duoc.level_up.model;
 
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-import javax.naming.Name;
 
 @Entity
 @Table(name = "CATEGORIA")

@@ -5,17 +5,18 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
-public class Employee {
-    @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 @Table(name = "EMPLEADO")
-public class Category {
+public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_empleado;
 
-    private String nombre;
-    private String cargo;
-}
+
 }

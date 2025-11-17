@@ -21,6 +21,11 @@ public class VentaService {
         return ventaRepository.findAll();
     }
 
+    public Venta createSale(Venta venta) {
+        return ventaRepository.save(venta);
+    }
+
+
 
 }
     

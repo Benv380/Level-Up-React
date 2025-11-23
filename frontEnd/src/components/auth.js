@@ -6,9 +6,7 @@ import {
 } from "firebase/auth";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 
-/**
- * Registrar nuevo usuario con datos extra en Firestore
- */
+
 export const registrarUsuario = async (nombre, numero, fechaNacimiento, email, password) => {
   try {
     // Crear usuario en Firebase Authentication

@@ -28,4 +28,8 @@ public class UserService {
         return userRepository.findById(id_usuario).get();
     }
 
+    public User findByUidFirebase(String uidFirebase) {
+    return userRepository.findByUidFirebase(uidFirebase);
+}
+
 }

@@ -23,9 +23,6 @@ public class Product {
     private String nombre;
 
     @Column(nullable = false)
-    private String codigo;
-
-    @Column(nullable = false)
     private Double precio;
 
     @Column(nullable = false)

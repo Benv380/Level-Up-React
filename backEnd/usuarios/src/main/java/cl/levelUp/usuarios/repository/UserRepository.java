@@ -6,5 +6,7 @@ import cl.levelUp.usuarios.model.User;
 
 
 public interface UserRepository extends JpaRepository <User, Long> {
-
+    User findByUidFirebase(String uidFirebase);
 }
+
+

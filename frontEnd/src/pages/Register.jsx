@@ -23,20 +23,24 @@ export default function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (formData.password !== formData.confirmPassword) {
       alert("Las contraseñas no coinciden");
       return;
     }
+
     if (!formData.terminos) {
       alert("Debes aceptar los términos y condiciones");
       return;
     }
+
+    // Llamada al registro completo (Firebase + Oracle)
     const resultado = await registrarUsuario(formData);
+
     if (resultado.ok) {
       alert("✅ Usuario registrado correctamente");
-      // Aquí puedes redirigir o limpiar el formulario si quieres
     } else {
-      alert("Error: " + resultado.error);
+      alert("❌ Error: " + resultado.error);
     }
   };
 

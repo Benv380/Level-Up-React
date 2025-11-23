@@ -12,13 +12,14 @@ export default function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+
     const resultado = await iniciarSesion(email, password);
 
     if (resultado.ok) {
       alert(`✅ Bienvenido, ${resultado.datos.nombre}`);
       navigate("/");
     } else {
-      setError("Usuario o contraseña incorrecta");
+      setError(resultado.error || "Usuario o contraseña incorrecta");
     }
   };
   

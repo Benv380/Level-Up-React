@@ -1,5 +1,7 @@
 package cl.levelUp.usuarios.model;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,6 +22,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_usuario;
 
+    @Column(name = "UID_FIREBASE", nullable = false)
+    private String uidFirebase;
+
     @Column(nullable = false)
     private String nombre;
 
@@ -28,8 +33,11 @@ public class User {
 
     @Column(nullable = false)
     private String email;
+    
+    @Column(name = "ID_ROL", nullable = false)
+    private Integer idRol = 1; 
 
-    @Column(nullable = false)
-    private String rol;
+    @Column(name = "FECHA_CREACION", insertable = false, updatable = false)
+    private LocalDateTime fechaCreacion;
 
 }

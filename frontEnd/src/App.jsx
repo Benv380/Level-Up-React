@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Nosotros from './pages/Nosotros';
 import Carrito from './pages/Carrito';
+import Paid from './pages/Paid';
 import { Routes, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
@@ -25,6 +26,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/carrito" element={<Carrito />} />
+          <Route path="/paid" element={<Paid />} />
         </Routes>
         <Footer />
       </CartProvider>

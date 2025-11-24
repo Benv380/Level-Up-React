@@ -3,7 +3,6 @@ package cl.levelUp.venta.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,14 +35,11 @@ public class VentaController {
         }
     }
     
+
     @PostMapping
-    public ResponseEntity<?> createSale(@RequestBody Venta venta) {
-        Venta newSale = ventaService.createSale(venta);
-        if (newSale == null) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Sale could not be created.");
-        } else {
-            return ResponseEntity.status(HttpStatus.CREATED).body(newSale);
-        }
+    public ResponseEntity<?> crearVenta(@RequestBody Venta venta) {
+        Venta v = ventaService.guardarVenta(venta);
+        return ResponseEntity.ok(v);
     }
 
 }

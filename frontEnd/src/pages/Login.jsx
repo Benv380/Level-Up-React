@@ -14,8 +14,10 @@ export default function Login() {
     e.preventDefault();
 
     const resultado = await iniciarSesion(email, password);
-
+ 
+    
     if (resultado.ok) {
+      localStorage.setItem("user", JSON.stringify(resultado.datos));
       alert(`✅ Bienvenido, ${resultado.datos.nombre}`);
       navigate("/");
     } else {

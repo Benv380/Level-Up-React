@@ -15,16 +15,27 @@ export function CartProvider({ children }) {
 
   const addToCart = (product) => {
     console.log("Agregado al carrito:", product);
+
+    const normalized = {
+      id: product.id_producto,       
+      nombre: product.nombre,
+      precio: product.precio,
+      imagen: product.imagen,
+      quantity: 1,
+    };
+
     setCart((prev) => {
-      const existing = prev.find((item) => item.id === product.id);
+      const existing = prev.find((item) => item.id === normalized.id);
+
       if (existing) {
         return prev.map((item) =>
-          item.id === product.id
+          item.id === normalized.id
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
       }
-      return [...prev, { ...product, quantity: 1 }];
+
+      return [...prev, normalized];
     });
   };
 

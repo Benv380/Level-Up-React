@@ -8,25 +8,27 @@ function Catalogo() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    // Llamada al microservicio Spring Boot
-    fetch("http://localhost:8080/catalogo")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Error al obtener los productos");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setProductos(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error al cargar productos:", error);
-        setError(error.message);
-        setLoading(false);
-      });
-  }, []);
+useEffect(() => {
+  // Llamada al microservicio de productos
+  fetch("http://localhost:8080/catalogo")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Error al obtener los productos");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      // Extraer lista HATEOAS
+      const listaProductos = data._embedded?.productList || [];
+      setProductos(listaProductos);
+      setLoading(false);
+    })
+    .catch((error) => {
+      console.error("Error al cargar productos:", error);
+      setError(error.message);
+      setLoading(false);
+    });
+}, []);
 
   if (loading) {
     return <p className="text-center mt-5">Cargando productos...</p>;

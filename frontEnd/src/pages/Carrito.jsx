@@ -6,11 +6,14 @@ import trash from "../assets/img/image.png";
 const Carrito = () => {
   const { user } = useAuth();
   const [email, setEmail] = useState(user?.email || "");
+
+  // Lee carrito desde localStorage
   const [cartItems, setCartItems] = useState(() => {
     const items = JSON.parse(localStorage.getItem("cart")) || [];
     return items.map((item) => ({ ...item, cantidad: item.cantidad || 1 }));
   });
 
+  // Mantener el email sincronizado con el usuario autenticado
   useEffect(() => {
     if (user?.email) setEmail(user.email);
   }, [user]);
@@ -33,11 +36,14 @@ const Carrito = () => {
     localStorage.setItem("cart", JSON.stringify(updated));
   };
 
+  // Eliminar item específico (tu botón del basurero)
   const vaciarCarrito = (id) => {
-    const nuevosItems = cartItems.filter(item => item.id !== id);
+    const nuevosItems = cartItems.filter((item) => item.id !== id);
     setCartItems(nuevosItems);
     localStorage.setItem("cart", JSON.stringify(nuevosItems));
   };
+
+  const total = cartItems.reduce((acc, p) => acc + p.precio * p.cantidad, 0);
 
   return (
     <section className="carrito">
@@ -48,12 +54,22 @@ const Carrito = () => {
         <form className="carrito-form">
           <div className="form-group">
             <label htmlFor="nombre">Nombre</label>
-            <input type="text" id="nombre" name="nombre" placeholder="Ej: Pedro Pazcal" />
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              placeholder="Ej: Pedro Pazcal"
+            />
           </div>
 
           <div className="form-group">
             <label htmlFor="telefono">Mobile</label>
-            <input type="tel" id="telefono" name="telefono" placeholder="+56 9 9999 9999" />
+            <input
+              type="tel"
+              id="telefono"
+              name="telefono"
+              placeholder="+56 9 9999 9999"
+            />
           </div>
 
           <div className="form-group">
@@ -135,15 +151,29 @@ const Carrito = () => {
                   <div className="price">${clp(producto.precio)}</div>
 
                   <div className="contador">
-                    <button type="button" onClick={() => vaciarCarrito(producto.id)} aria-label="Vaciar">
+                    <button
+                      type="button"
+                      onClick={() => vaciarCarrito(producto.id)}
+                      aria-label="Vaciar"
+                    >
                       <img src={trash} alt="Vaciar" height="25" width="25" />
                     </button>
 
-                    <button type="button" onClick={() => disminuirCantidad(producto.id)} aria-label="Disminuir">
+                    <button
+                      type="button"
+                      onClick={() => disminuirCantidad(producto.id)}
+                      aria-label="Disminuir"
+                    >
                       −
                     </button>
+
                     <span>{producto.cantidad}</span>
-                    <button type="button" onClick={() => incrementarCantidad(producto.id)} aria-label="Aumentar">
+
+                    <button
+                      type="button"
+                      onClick={() => incrementarCantidad(producto.id)}
+                      aria-label="Aumentar"
+                    >
                       +
                     </button>
                   </div>
@@ -156,17 +186,13 @@ const Carrito = () => {
 
               <div className="total">
                 <p>Total</p>
-                <p>
-                  $
-                  {clp(
-                    cartItems.reduce((acc, p) => acc + p.precio * p.cantidad, 0)
-                  )}
-                </p>
+                <p>${clp(total)}</p>
               </div>
             </>
           )}
 
-          <button className="btn-pago">Pagar</button>
+          <a href="/paid"><button type="button" className="btn-pago">Pagar</button></a>
+          
         </div>
       </div>
     </section>

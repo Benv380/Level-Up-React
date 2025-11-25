@@ -1,5 +1,7 @@
 package cl.levelUp.productos.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -9,11 +11,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name= "PRODUCTOS")
+@Table(name = "PRODUCTOS")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class Product {
 
     @Id
@@ -28,5 +29,24 @@ public class Product {
     @Column(nullable = false)
     private String descripcion;
 
+    @JsonProperty("imagenUrl")
+    public String getImagenUrl() {
+        if (id_producto == null) {
+            return null;
+        }
 
+        return switch (id_producto.intValue()) {
+            case 1 -> "http://localhost:8080/img/Catan.jpeg";
+            case 2 -> "http://localhost:8080/img/Carcasonne.jpeg";
+            case 3 -> "http://localhost:8080/img/Controlador xbox.jpeg";
+            case 4 -> "http://localhost:8080/img/Audifonos.jpeg";   
+            case 5 -> "http://localhost:8080/img/Playstation5.jpeg";   
+            case 6 -> "http://localhost:8080/img/Computador ASUS.jpeg";
+            case 7 -> "http://localhost:8080/img/Silla gamer.jpeg";
+            case 8 -> "http://localhost:8080/img/Mouse gamer.jpeg";
+            case 9 -> "http://localhost:8080/img/Mousepag gamer.jpeg";
+            case 10 -> "http://localhost:8080/img/Polera LevelUp.jpeg";
+            default -> null;
+        }; 
+    }
 }

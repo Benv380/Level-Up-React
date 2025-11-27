@@ -2,6 +2,8 @@ package cl.levelUp.venta.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -19,16 +21,23 @@ import lombok.NoArgsConstructor;
 public class Venta {
 
     @Id
-    @Column(name = "id_venta")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID_VENTA")
     private Long idventa;
 
-    @Column(name = "id_usuario")
+    @Column(name = "ID_USUARIO")
     private Long idusuario;
 
-    @Column(name = "fecha_venta")
+    @Column(name = "FECHA_VENTA")
     private String fechaventa;
 
+    @Column(name = "TOTAL_VENTA")
+    private Double totalVenta;
+
+    @Column(name = "ESTADO")
+    private String estado;
 }
+
 
 
 

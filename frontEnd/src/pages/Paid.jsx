@@ -24,20 +24,17 @@ export default function Paid() {
                 return;
             }
 
-            // 3️⃣ Armar JSON para el backend
+            
             const venta = {
-                idUsuario: idUsuario,
-                total: cart.reduce(
-                    (acc, item) => acc + Number(String(item.precio).replace(/\./g, "")) * Number(item.cantidad),
+                idusuario: idUsuario,
+                totalVenta: cart.reduce(
+                    (acc, item) =>
+                        acc + Number(String(item.precio).replace(/\./g, "")) * Number(item.cantidad),
                     0
-                ),
-                metodoPago: "WEBPAY",
-                detalle: cart.map(item => ({
-                    idProducto: item.id,
-                    cantidad: Number(item.cantidad),
-                    precioUnitario: (total)
-                }))
+                )
             };
+
+
 
             console.log("📦 Enviando venta:", venta);
 
@@ -63,7 +60,8 @@ export default function Paid() {
 
             // 6️⃣ Redirigir a página de éxito
             alert("Venta registrada con éxito");
-            window.location.href = "/success";
+            window.location.href = "/";
+
 
         } catch (error) {
             console.error("❌ Error al enviar venta:", error);

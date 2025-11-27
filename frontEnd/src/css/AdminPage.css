@@ -1,0 +1,90 @@
+/* Fondo general similar a Nosotros */
+.admin-page {
+  padding: 60px 20px;
+  background-color: #0b0b0b;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: calc(100vh - 80px); /* ajusta según altura de tu header */
+}
+
+/* Tarjeta central estilo Level-Up */
+.admin-container {
+  max-width: 900px;
+  width: 100%;
+  background: #1a1a1a;
+  border-radius: 18px;
+  border: 1px solid rgba(79, 209, 255, 0.22);
+  box-shadow: 0 6px 26px rgba(0, 0, 0, 0.35);
+  padding: 32px 28px;
+}
+
+/* Título y descripción con mismo estilo que Nosotros */
+.admin-title {
+  font-size: 2.3rem;
+  margin-bottom: 10px;
+  color: #00bcd4;
+}
+
+.admin-description {
+  font-size: 1.05rem;
+  color: #cfcfcf;
+  margin-bottom: 24px;
+}
+
+/* Lista de accesos */
+.admin-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Cada item tipo “card” */
+.admin-item a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  background: #111111;
+  color: #e0e0e0;
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(79, 209, 255, 0.18);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+  transition: transform 0.18s ease, box-shadow 0.18s ease,
+    border-color 0.18s ease, background-color 0.18s ease;
+  font-size: 0.98rem;
+}
+
+/* Icono al inicio del texto */
+.admin-icon {
+  font-size: 1.2rem;
+}
+
+/* Hover similar a las cards de Misión/Visión */
+.admin-item a:hover {
+  transform: translateY(-3px);
+  border-color: rgba(79, 209, 255, 0.35);
+  background-color: #151515;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55),
+    0 0 0 3px rgba(79, 209, 255, 0.18);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .admin-container {
+    padding: 24px 18px;
+  }
+
+  .admin-title {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .admin-description {
+    text-align: center;
+  }
+}

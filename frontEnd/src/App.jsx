@@ -7,15 +7,17 @@ import Register from './pages/Register';
 import Nosotros from './pages/Nosotros';
 import Carrito from './pages/Carrito';
 import Paid from './pages/Paid';
+import AdminPage from './pages/AdminPage';
+import AdminRoute from './components/AdminRoute';
 import { Routes, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './App.css';
 import { AuthProvider } from './components/context/authContext';
 import { CartProvider } from './components/context/CartContext';
 
 function App() {
-  return ( 
+  return (
     <AuthProvider>
       <CartProvider>
         <Header />
@@ -27,6 +29,14 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/carrito" element={<Carrito />} />
           <Route path="/paid" element={<Paid />} />
+          <Route
+            path="/admin"
+            element={
+              <AdminRoute>
+                <AdminPage />
+              </AdminRoute>
+            }
+          />
         </Routes>
         <Footer />
       </CartProvider>

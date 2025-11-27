@@ -1,56 +1,41 @@
 import React, { useEffect, useState } from "react";
 import "../css/Carrito.css";
 import { useAuth } from "../components/context/authContext";
+import { useCart } from "../components/context/CartContext";
 import trash from "../assets/img/image.png";
 
 const Carrito = () => {
   const { user } = useAuth();
   const [email, setEmail] = useState(user?.email || "");
 
-  // Lee carrito desde localStorage
-  const [cartItems, setCartItems] = useState(() => {
-    const items = JSON.parse(localStorage.getItem("cart")) || [];
-    return items.map((item) => ({ ...item, cantidad: item.cantidad || 1 }));
-  });
+  
+  const {
+    cart,
+    removeFromCart,
+    incrementarCantidad,
+    disminuirCantidad,
+  } = useCart();
 
-  // Mantener el email sincronizado con el usuario autenticado
+  const cartItems = cart;
+
+
   useEffect(() => {
     if (user?.email) setEmail(user.email);
   }, [user]);
 
   const clp = (n) => Number(n || 0).toLocaleString("es-CL");
 
-  const incrementarCantidad = (id) => {
-    const updated = cartItems.map((it) =>
-      it.id === id ? { ...it, cantidad: it.cantidad + 1 } : it
-    );
-    setCartItems(updated);
-    localStorage.setItem("cart", JSON.stringify(updated));
-  };
-
-  const disminuirCantidad = (id) => {
-    const updated = cartItems.map((it) =>
-      it.id === id && it.cantidad > 1 ? { ...it, cantidad: it.cantidad - 1 } : it
-    );
-    setCartItems(updated);
-    localStorage.setItem("cart", JSON.stringify(updated));
-  };
-
-  // Eliminar item específico (tu botón del basurero)
-  const vaciarCarrito = (id) => {
-    const nuevosItems = cartItems.filter((item) => item.id !== id);
-    setCartItems(nuevosItems);
-    localStorage.setItem("cart", JSON.stringify(nuevosItems));
-  };
-
-  const total = cartItems.reduce((acc, p) => acc + p.precio * p.cantidad, 0);
+  const total = cartItems.reduce(
+    (acc, p) => acc + p.precio * p.cantidad,
+    0
+  );
 
   return (
     <section className="carrito">
       <h1 className="titulo">Tu Carrito</h1>
 
       <div className="carrito-container">
-        {/* FORMULARIO */}
+        {/* FORMULARIO (idéntico al tuyo) */}
         <form className="carrito-form">
           <div className="form-group">
             <label htmlFor="nombre">Nombre</label>
@@ -86,7 +71,7 @@ const Carrito = () => {
           <div className="form-group">
             <label htmlFor="region">Región de despacho</label>
             <select id="region" name="region" defaultValue="SELECCIONE UNA OPCIÓN">
-              <option value="SELECCIONE UNA OPCIÓN">SELECCIONE UNA OPCIÓN</option>
+              <option value="SELECCIONE UNA OPCIÓN">SELECCIONE UNA OPCCIÓN</option>
               <option value="Arica y Parinacota">Arica y Parinacota</option>
               <option value="Tarapacá">Tarapacá</option>
               <option value="Antofagasta">Antofagasta</option>
@@ -138,7 +123,7 @@ const Carrito = () => {
                 <div key={producto.id} className="item-row">
                   <div className="item-info" title={producto.nombre}>
                     <img
-                      src={producto.imagen}
+                      src={producto.imagenUrl}
                       alt={producto.nombre}
                       onError={(e) => {
                         e.currentTarget.src =
@@ -153,7 +138,7 @@ const Carrito = () => {
                   <div className="contador">
                     <button
                       type="button"
-                      onClick={() => vaciarCarrito(producto.id)}
+                      onClick={() => removeFromCart(producto.id)}
                       aria-label="Vaciar"
                     >
                       <img src={trash} alt="Vaciar" height="25" width="25" />
@@ -191,8 +176,9 @@ const Carrito = () => {
             </>
           )}
 
-          <a href="/paid"><button type="button" className="btn-pago">Pagar</button></a>
-          
+          <a href="/paid">
+            <button type="button" className="btn-pago">Pagar</button>
+          </a>
         </div>
       </div>
     </section>

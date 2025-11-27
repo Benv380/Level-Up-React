@@ -44,7 +44,7 @@ useEffect(() => {
         <div className="row g-4 catalogo-row">
           <h1 className="catalogo-titulo">Catálogo de Productos</h1>
           {productos.map((p) => (
-            <div key={p.id} className="catalogo-card-col col-12 col-sm-6 col-md-3 col-lg-3">
+            <div key={p.id_producto} className="catalogo-card-col col-12 col-sm-6 col-md-3 col-lg-3">
               <div className="card h-100 shadow catalogo-card" data-testid="producto">
                 <img
                   src={p.imagenUrl}

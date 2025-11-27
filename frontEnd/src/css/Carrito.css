@@ -181,4 +181,9 @@ section.carrito .item-row > *:nth-child(3){ text-align: center; } /* Cantidad */
 
 .carrito-productos p {
   color: #ffffff !important;
+   text-align: center;
+  margin-top: 40px;
+  font-size: 1.2rem;
 }
+
+

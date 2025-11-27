@@ -39,6 +39,7 @@ export default function Register() {
 
     if (resultado.ok) {
       alert("✅ Usuario registrado correctamente");
+      window.location.href = "/";
     } else {
       alert("❌ Error: " + resultado.error);
     }

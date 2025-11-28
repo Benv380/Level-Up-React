@@ -14,7 +14,7 @@ export default function AdminPage() {
         <ul className="admin-list">
           <li className="admin-item">
             <a
-              href="http://localhost:8082/swagger-ui/index.html"
+              href="http://localhost:8081/swagger-ui/index.html"
               target="_blank"
               rel="noreferrer"
             >
